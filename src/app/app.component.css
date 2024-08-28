@@ -1,0 +1,17 @@
+.sidebar .nav i{
+    font-size: 24px;
+    float: left;
+    margin-right: 12px;
+    line-height: 30px;
+    width: 34px;
+    text-align: center;
+    color: #500d0d80 !important;
+    position: relative;
+}
+
+
+
+.mat-tab-label-active {
+    background-color: red;
+    opacity: 1 !important;
+}

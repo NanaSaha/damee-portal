@@ -1,0 +1,355 @@
+<style>
+    .mat-tab-label {
+        height: 48px;
+        padding: 0 24px;
+        cursor: pointer;
+        box-sizing: border-box;
+        opacity: .6;
+        min-width: 160px;
+        text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+        position: relative;
+        color: red;
+        text-decoration: underline;
+    }
+
+    .mat-tab-label-active {
+        background-color: red;
+        opacity: 1 !important;
+    }
+</style>
+
+<h4 style="font-size: 30px;text-align: center;font-weight: 800;"> Marketplace Listing Details</h4>
+<section class="w-full appear px-4 md:px-0">
+
+    <div class="flex w-full items-center justify-between pt-8">
+        <h2 class="hidden text-center text-2xl font-bold leading-none md:block md:text-left md:text-[26px]">Card Details
+        </h2>
+
+        <div class="mb-6 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100"
+            (click)="goBack()">
+            <svg class="h-6 w-6" viewBox="0 0 15 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 1.58887L2 15.3367L14 29.0846" stroke="black" stroke-width="2"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="w-full gap-5 sm:flex sm:items-start pt-8 md:pt-12">
+        <div class="grid-col-1 mx-auto grid min-w-[240px] gap-5 md:sticky md:top-[8.6rem]">
+            <div class="relative cursor-pointer ">
+                <div class="flex-row flex-wrap">
+                    <div class="card silver-card  "
+                        style="background: url(/assets/img/card_back.svg) center center / cover no-repeat;">
+                        <div class="absolute left-0 top-[14px] z-[10]">
+                            <div
+                                class="w-auto text-[16px] bg-[#C9B48D] text-white font-bold capitalize rounded-full px-[20px] py-1 mx-4 leading-snug">
+                                Premium</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__body__chip">
+                                <div class="chip"></div>
+                                <div class="connect-symbol"><svg width="24" height="29" viewBox="0 0 24 29" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M18.4129 1.58203C20.6065 5.39386 21.7613 9.71783 21.7613 14.1193C21.7613 18.5209 20.6065 22.8448 18.4129 26.6567M12.9147 4.34024C14.6256 7.31346 15.5264 10.6862 15.5264 14.1193C15.5264 17.5525 14.6256 20.9252 12.9147 23.8985M7.66632 6.87278C8.90346 9.04552 9.55477 11.5102 9.55477 14.019C9.55477 16.5279 8.90346 18.9926 7.66632 21.1653M2.41797 9.60591C3.30957 10.9597 3.78225 12.5235 3.78225 14.1193C3.78225 15.7152 3.30957 17.2789 2.41797 18.6328"
+                                            stroke="#D9D9D9" stroke-width="2.86567" stroke-linecap="round"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="card__body__profile-img">
+                                <div class="img-wrap"><span
+                                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                                        <img src="{{card_details.cover_art_url}}" decoding="async" data-nimg="fill"
+                                            class="bg-gray-2" alt="Sylensa1"
+                                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
+                                            *ngIf="card_details.cover_art_url">
+
+
+                                        <img src="/assets/img/show.jpeg" decoding="async" data-nimg="fill"
+                                            class="bg-gray-2" alt="Sylensa1"
+                                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
+                                            *ngIf="!card_details.cover_art_url">
+
+                                        <noscript></noscript></span>
+                                </div>
+                            </div>
+                            <div class="card__body__meta">
+                                <h2 class="artists-name capitalize">{{card_details.song.stage_name}}</h2>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <div class="w-full flex items-center justify-between pl-4">
+                                <div class="flex flex-1 w-1/2">
+                                    <div class="card__info"><label class="">Powered by</label>
+                                        <p class="card__info__asset-name line-clamp-2 capitalize ">
+                                            {{card_details.song.title}}</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 flex justify-center items-center">
+                                    <div class="card__watermark"><img src="/assets/img/logo-w.svg" alt="Damee"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+        <div class="w-full grid grid-cols-1 gap-5 md:min-w-[860px]">
+
+
+
+            <div
+                class="flex flex-wrap justify-between items-center gap-5 bg-white hover:shadow-lg rounded-xl p-[20px] mt-5 md:mt-0">
+                <div class="artist-info !font-bold flex flex-col gap-y-3 md:gap-2">
+                    <h2 class="text-2xl leading-none capitalize">{{card_details.song.title}}</h2>
+                    <p class="text-base">{{card_details.song.stage_name}}</p>
+                </div>
+                <div><a class="flex items-center gap-2" href="#"><span
+                            style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 47px; height: 47px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                                src="{{card_details.owner.photo_url}}" decoding="async" data-nimg="fixed"
+                                class="rounded-full bg-gray-200"
+                                style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"><noscript></noscript></span>
+                        <div>
+                            <p>Created by <span
+                                    class="text-prime font-bold capitalize underline">{{card_details.song.stage_name}}</span>
+                            </p>
+                            <p>on {{card_details.created_at | date: 'mediumDate'}}</p>
+                        </div>
+                    </a></div>
+                <div class="flex items-center gap-2"><a class="flex items-center gap-2"
+                        href="/profile/XDcr14zXfAiGxHNET1WZ"><span
+                            style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 47px; height: 47px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                                src="{{card_details.owner.photo_url}}" decoding="async" data-nimg="fixed"
+                                class="rounded-full bg-gray-200"
+                                style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"><noscript></noscript></span>
+                        <p>Owned by <span class="font-bold capitalize underline">{{card_details.song.stage_name}}</span>
+                        </p>
+                    </a></div>
+                <!-- <div class="rounded-full border border-black py-1 px-5 font-bold">10% Share</div> -->
+            </div>
+            <div class="grid md:grid-cols-6 gap-5">
+                <div
+                    class="col-span-2 w-full flex items-center justify-between rounded-xl bg-white hover:shadow-lg p-6 text-center">
+                    <img src="/assets/img/show.jpeg" width="62" height="42" alt="">
+                    <div><span class="text-[30px] font-bold">0</span>
+                        <p class="pt-2">Plays on Damee</p>
+                    </div>
+                </div>
+                <div class="rounded-xl bg-white hover:shadow-lg py-6 text-center"><span
+                        style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 18px; height: 18px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                            src="/assets/img/apple.svg" decoding="async" data-nimg="fixed"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                    <div class="text-[30px] font-bold">0</div>
+                    <p class="pt-1">Plays</p>
+                </div>
+                <div class="rounded-xl bg-white hover:shadow-lg py-6 text-center"><span
+                        style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 18px; height: 18px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                            src="/assets/img/spotify.svg" decoding="async" data-nimg="fixed"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                    <div class="text-[30px] font-bold">0</div>
+                    <p class="pt-1">Plays</p>
+                </div>
+                <div class="rounded-xl bg-white hover:shadow-lg py-6 text-center"><span
+                        style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 18px; height: 18px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                            src="/assets/img/youtube.svg" decoding="async" data-nimg="fixed"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                    <div class="text-[30px] font-bold">0</div>
+                    <p class="pt-1">Plays</p>
+                </div>
+                <div class="rounded-xl bg-white hover:shadow-lg py-6 text-center"><span
+                        style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 18px; height: 18px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                            src="/assets/img/deezer.svg" decoding="async" data-nimg="fixed"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                    <div class="text-[30px] font-bold">0</div>
+                    <p class="pt-1">Plays</p>
+                </div>
+            </div>
+            <section class="flex w-full flex-wrap items-end justify-between" style="margin-left: 50%;">
+
+                <div class="flex min-w-[50%] flex-wrap items-end justify-start gap-5 sm:justify-normal">
+
+                    <button class="btn btn-primary btn-round" 
+                        *ngIf="card_details.status != 'active'">Approve Request </button>
+                    <button class="btn btn-danger btn-round">Cancel Trade Request</button>
+
+                    <button class="btn btn-warning btn-round" (click)=downloadCSV(card_details)>Export Data</button>
+
+                </div>
+            </section>
+            <div class="rounded-xl bg-white p-[20px] hover:shadow-lg">
+
+                <div>
+
+                    <mat-tab-group
+                        class="flex md:truncate overflow-auto gap-x-1 gap-y-2 border-b border-[#D2D2D2] pb-2 md:pb-[20px]">
+                        <mat-tab label="Ownership">
+                     
+<div  style="line-height: 3.2;">
+    <h2 class="font-bold text-xl">Fullname</h2>
+    <p class="pt-3" style="margin-top: -3%;">
+        {{card_details.owner.first_name}} {{card_details.owner.last_name}}
+    </p>
+</div>
+<br>
+<div  style="line-height: 3.2;">
+<h2 class="font-bold text-xl">Biograpghy</h2>
+<p class="pt-3" style="margin-top: -3%;">{{card_details.owner.bio}}</p>
+</div>
+<br>
+<div style="line-height: 3.2;">
+    <h2 class="font-bold text-xl">Mobile Number</h2>
+    <p class="pt-3" style="margin-top: -3%;">
+        {{card_details.owner.mobile_number}} </p>
+</div>
+<br>
+<div style="line-height: 3.2;">
+    <h2 class="font-bold text-xl">Email</h2>
+    <p class="pt-3" style="margin-top: -3%;">{{card_details.owner.email}}
+    </p>
+</div>
+
+<div style="line-height: 3.2;">
+    <h2 class="font-bold text-xl">Music on Other Platform</h2>
+    <p class="pt-3" style="margin-top: -3%;">
+        {{card_details.song.on_other_platforms}}</p>
+</div>
+
+<div style="line-height: 3.2;">
+    <h2 class="font-bold text-xl">Owner has rights to upload</h2>
+    <p class="pt-3" style="margin-top: -3%;">
+        {{card_details.song.owner_has_rights_to_upload}}</p>
+</div>
+    <div class="w-full flex flex-wrap items-center mb-5">
+        <div class="w-full sm:w-1/2 pr-3">
+            <div class=" bg-white py-4 rounded-xl text-center mb-3">
+                <p>Followers</p>
+                <div class="font-bold text-3xl text-[#24A129] pt-1">
+    
+                    ↑{{card_details.owner.followers}}</div>
+            </div>
+        </div>
+        <div class="w-full sm:w-1/2 pl-3">
+            <div class="bg-white py-4 rounded-xl text-center mb-3">
+                <p>Followings</p>
+                <div class="font-bold text-3xl text-[#24A129]">
+                    +{{card_details.owner.following}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+                           
+
+                        </mat-tab>
+                        <mat-tab label="Platform Published">
+                            <div>
+                                <div class="mt-4 h-[50vh] overflow-x-hidden rounded-md bg-white/50 p-6">
+                                    <h2 class="text-3xl font-bold text-black">Platform Published</h2>
+                                    <span class="pt-5 text-lg">
+
+
+                                        <b>Apple Music:</b><span style="color: red"> {{card_details.apple_id}}
+                                        </span><br>
+                                        <b>Youtube:</b><span style="color: red"> {{card_details.youtube_id}} </span><br>
+                                        <b>Spotify:</b><span style="color: red"> {{card_details.spotify_id}} </span><br>
+                                        <b>Deezer:</b><span style="color: red"> {{card_details.deezer_id}} </span><br>
+
+                                        <b>Genre:</b><span style="color: red"> {{card_details.song.genre}} </span><br>
+
+                                        <b>Song upload date:</b> <span style="color: red">
+                                            {{card_details.song.created_at}} </span><br>
+
+
+
+                                        <div class="w-full pt-5">
+                                            <div class="bg-white py-6 rounded-xl text-center mb-6"><span
+                                                    class="font-bold text-3xl">0</span>
+                                                <p class="text-xl pt-2">Total Plays</p>
+                                            </div>
+
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Ownership History">
+                            <div class="mt-4 h-[50vh] overflow-x-hidden rounded-md bg-white/50 p-6">
+                                <h2 class="text-3xl font-bold text-black">Ownership history</h2>
+                                <span class="pt-5 text-lg">
+
+                                    <div class="w-full">
+                                        <div class="pb-4 border-b border-gray-2 pt-4">
+                                            <h2 class="font-bold">{{card_details.ownership_history[0]?.purchase_date |
+                                                date:'medium'}}</h2>
+                                            <div class="flex items-center">
+                                                <div class="w-48 font-bold">Current Owner:</div>
+                                                <div>{{card_details.ownership_history[0]?.current_owner.full_name}}
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center pb-1">
+                                                <div class="w-48 font-bold">Previous Owner:</div>
+                                                <div>{{card_details.ownership_history[0]?.previous_owner.full_name}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pb-4 border-b border-gray-2 pt-4">
+
+                                            <div class="flex items-center">
+                                                <div class="w-48 font-bold">Sale</div>
+                                                <div>{{card_details.ownership_history[0]?.sale}}</div>
+                                            </div>
+                                            <div class="flex items-center pb-1">
+                                                <div class="w-48 font-bold">Value</div>
+                                                <div>{{card_details.ownership_history[0]?.value}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </span>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Lyrics"> 
+                            <span style="white-space: normal;">{{card_details.lyrics}} </span> </mat-tab>
+                        <mat-tab label="Artist Info">
+
+                            <div style="line-height: 3.2;">
+                                <h2 class="font-bold text-xl">The Artist</h2>
+                                <p class="pt-3" style="margin-top: -3%;">{{card_details.artist_info}}</p>
+                            </div>
+
+
+                            <!-- <div>
+                                <div class="mt-4 h-[50vh] overflow-x-hidden rounded-md bg-white/50 p-6">
+                                    <h2 class="text-3xl font-bold text-black">The Artist</h2>
+                                    <p class="pt-5 text-lg">{{card_details.artist_info}}</p>
+
+                                    
+                                </div>
+                            </div> -->
+                        </mat-tab>
+                        <mat-tab label="Production">
+
+                            <div style="line-height: 3.2;">
+                                <h2 class="font-bold text-xl">Production</h2>
+                                <p class="pt-3" style="margin-top: -3%;">
+                                    <span style="white-space: normal;">{{card_details.production_info}}
+                                    </span>
+                                    </p>
+                            </div>
+                            <!-- <div>
+                                <div class="mt-4 h-[50vh] overflow-x-hidden rounded-md bg-white/50 p-6">
+                                    <h2 class="text-3xl font-bold text-black">Production</h2>
+                                    <p class="pt-5 text-lg">{{card_details.production_info}}</p>
+                                </div>
+                            </div> -->
+                        </mat-tab>
+
+                    </mat-tab-group>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

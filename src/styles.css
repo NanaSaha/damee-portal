@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index:  1200 !important;
+}
+
+.sidebar .nav i,
+.off-canvas-sidebar .nav i {
+    font-size: 24px;
+    float: left;
+    margin-right: 12px;
+    line-height: 30px;
+    width: 34px;
+    text-align: center;
+    color: #500d0d80 !important;
+    position: relative;
+}

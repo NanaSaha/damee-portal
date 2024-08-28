@@ -1,0 +1,82 @@
+
+
+
+<section class="container mx-auto w-full pb-12">
+   
+    <div class="flex w-full flex-wrap items-start justify-between">
+     
+        <div class="w-full sm:w-1/1 pt-10 sm:pt-0">
+            <div class="mx-12 sm:mx-12 rounded-xl bg-gray-2 p-8 pb-12">
+               
+              
+                <div class="appear container mx-auto" id="excel-table">
+
+        
+                            <div *ngIf="this.user_list?.length > 0">
+                                <div class="mt-12 h-[50vh] overflow-x-hidden rounded-md bg-white/50 p-6">
+                                    <h2 class="text-3xl font-bold text-black">Ownership</h2>
+                                    <span class="pt-5 text-lg" *ngFor="let item of user_list;let i = index">
+                                        <div class="w-full">
+                                         
+
+                                            <div class="pt-5">
+                                                <h2 class="text-xl"> <span>{{i + 1}}. </span>{{item.owner.full_name}}</h2>
+                                                <p class="pt-3" style="margin-top: -3%;">
+                                                    <!-- {{item.owner.full_name}}  -->
+                                                </p>
+                                            </div>
+
+                                            <div class="pt-5" id="moveUp">
+                                                <h2 class="font-bold text-xl">Ownership Percentage</h2>
+                                                <p class="pt-3" style="margin-top: -3%;color:brown">{{item.ownership_percentage}}%</p>
+                                            </div>
+                                            <div class="">
+                                                <h2 class="font-bold text-xl">Amount Received</h2>
+                                                <p class="pt-3" style="margin-top: -3%;color:rgb(7, 65, 17)">
+                                                £{{item.amount_received}} </p>
+                                            </div>
+                                     
+
+                                           
+                                         
+
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div *ngIf="this.user_list?.length == 0">
+                                <div class="mt-12 h-[50vh] overflow-x-hidden rounded-md bg-white/50 p-6">
+                                    <!-- <h2 class="text-3xl font-bold text-black">Ownership</h2> -->
+                                    <span class="pt-5 text-lg" >
+                                        <div class="w-full">
+                            
+                            
+                                            <div class="pt-5">
+                                                <h2 class="text-xl"></h2>
+                                                <p class="pt-3" style="margin-top: -3%;">
+                                                  *No Distribution done for owners
+                                                </p>
+                                            </div>
+                            
+                                          
+                            
+                            
+                            
+                            
+                            
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                       
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

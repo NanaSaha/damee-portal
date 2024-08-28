@@ -1,0 +1,421 @@
+<style>
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ffffffe8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        /* border: 4px solid #Fff; */
+        animation: loader 2s infinite ease;
+    }
+
+    .loader-inner {
+        vertical-align: top;
+        display: inline-block;
+        width: 100%;
+        background-color: #fff;
+        /* animation: loader-inner 2s infinite ease-in; */
+    }
+
+    /* @keyframes loader {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(90deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        75% {
+            transform: rotate(270deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+
+
+    } */
+.h-56{
+height: 13rem!important;
+}
+
+h2, .h2 {
+    font-size: 2.5em;
+    margin-bottom: 0px !important;
+}
+
+.leff{
+    margin-left: 50px;
+}
+        
+</style>
+
+<!-- <div class="loader-wrapper" *ngIf="!loading">
+    <img src="assets/img/show.jpeg" class="loader">
+  
+</div> -->
+
+
+<section class="bg-white py-4 px-2 sm:px-6 sm:py-10">
+    <div class="container mx-auto border-b pb-8 border-gray-2">
+        <h2 class="text-2xl md:text-3xl font-bold">Transactions</h2>
+        <div class="w-full py-8">
+            <div class="border-t border-gray-2 py-2 md:py-4">
+                <div class="w-full flex items-center justify-between">
+                    <div class="flex items-center h-[7rem] md:h-48">
+                        <div class="transform scale-[0.50] md:scale-[0.75] w-40 -ml-12 md:-ml-[1.2rem]">
+                            <div class="h-56 !mx-0 bg-[#3E4550] relative musicCard mx-2 mb-2 cursor-pointer rounded-2xl bg-cover drop-shadow-lg"
+                                style="background: url(&quot;/assets/img/card_back.svg&quot;) center center no-repeat; width: 100%;">
+                                <div
+                                    class="appear relative h-full w-full rounded-[16px] bg-cover bg-center bg-no-repeat p-[10px]">
+                                    <div class="p-2" style="height: calc(100% - 3rem);">
+                                        <div class="w-full flex justify-between">
+                                            <div></div>
+                                            <div class="flex items-center space-x-2 md:space-x-3">
+                                                <div class="relative w-6 h-6"><span
+                                                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                            sizes="100vw" 
+                                                            src="/assets/img/Chip-silver.svg" decoding="async"
+                                                            data-nimg="fill"
+                                                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span><svg
+                                                        class="absolute" viewBox="0 0 63 34" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg" style="bottom: -8px;">
+                                                        <g filter="url(#filter0_d_408_18464)">
+                                                            <rect width="31" height="2" rx="1"
+                                                                transform="matrix(1 0 0 -1 16 18)" fill="white"></rect>
+                                                        </g>
+                                                        <defs>
+                                                            <filter id="filter0_d_408_18464" x="0" y="0" width="63"
+                                                                height="34" filterUnits="userSpaceOnUse"
+                                                                color-interpolation-filters="sRGB">
+                                                                <feFlood flood-opacity="0" result="BackgroundImageFix">
+                                                                </feFlood>
+                                                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                                    result="hardAlpha"></feColorMatrix>
+                                                                <feMorphology radius="7" operator="dilate"
+                                                                    in="SourceAlpha"
+                                                                    result="effect1_dropShadow_408_18464">
+                                                                </feMorphology>
+                                                                <feOffset></feOffset>
+                                                                <feGaussianBlur stdDeviation="4.5"></feGaussianBlur>
+                                                                <feComposite in2="hardAlpha" operator="out">
+                                                                </feComposite>
+                                                                <feColorMatrix type="matrix"
+                                                                    values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0">
+                                                                </feColorMatrix>
+                                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                                    result="effect1_dropShadow_408_18464"></feBlend>
+                                                                <feBlend mode="normal" in="SourceGraphic"
+                                                                    in2="effect1_dropShadow_408_18464" result="shape">
+                                                                </feBlend>
+                                                            </filter>
+                                                        </defs>
+                                                    </svg></div>
+                                                <div class="relative w-6 h-6"><svg class="w-full h-full"
+                                                        viewBox="0 0 31 39" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M24.3263 2C27.3881 7.32067 29 13.3562 29 19.5C29 25.6438 27.3881 31.6793 24.3263 37M16.6516 5.85C19.0398 10.0001 20.2971 14.7078 20.2971 19.5C20.2971 24.2922 19.0398 28.9999 16.6516 33.15M9.32582 9.385C11.0527 12.4178 11.9618 15.858 11.9618 19.36C11.9618 22.862 11.0527 26.3022 9.32582 29.335M2 13.2C3.24452 15.0897 3.90432 17.2725 3.90432 19.5C3.90432 21.7275 3.24452 23.9103 2 25.8"
+                                                            stroke="#D9D9D9" stroke-width="4" stroke-linecap="round">
+                                                        </path>
+                                                    </svg></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-full flex items-center justify-center relative pt-0"
+                                            style="height: calc(100% - 3rem);">
+                                            <div
+                                                class="flex justify-center items-center rounded-full border-[3px] border-img-border">
+                                                <span
+                                                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 50px; height: 50px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                                                        src="https://user-gen-content.s3.amazonaws.com/stage/media/cover/wvPq5LsK1715Mdcxlr7t.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXU2R3TSSJQYXHVNI%2F20230418%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20230418T162533Z&amp;X-Amz-Expires=18000&amp;X-Amz-Signature=1c8c3c9051d3e758f9f8b52156f155f8b1c2aa7b5891d73ad19955f0c79d3287&amp;X-Amz-SignedHeaders=host"
+                                                        decoding="async" data-nimg="fixed"
+                                                        class="rounded-full bg-gray-4 appear"
+                                                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 w-full">
+                                    <div class="flex flex-col items-center justify-center font-bold py-2 z-10">
+                                        <h2 class="text-white text-xl md:text-xl capitalize">DIPWT </h2>
+                                    </div>
+                                    <div class="w-full  px-2 rounded-b-2xl flex justify-between items-center z-0"
+                                        style="background: linear-gradient(94.2deg, rgba(255, 255, 255, 0) 13.99%, rgb(255, 255, 255) 47.58%, rgba(255, 255, 255, 0) 77.77%), rgb(153, 153, 153);">
+                                        <div class="font-bold"><span class="text-xs leading-relaxed">Powered By</span>
+                                            <p class="leading-tight capitalize text-base">test test</p>
+                                        </div>
+                                        <div class="relative w-12 h-12 flex items-center justify-center"><span
+                                                style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                    src="/assets/img/logo-w.svg" decoding="async" data-nimg="fill"
+                                                    class="w-full h-full"
+                                                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"><noscript></noscript></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col justify-between space-y-2 md:space-y-5 text-sm md:text-lg -ml-8 md:ml-0 leff" >
+                            <div class="font-bold text-sm md:text-xl capitalize truncate">DIPWT - test test</div>
+                            <div>Owned by <b>anonymous</b></div>
+                            <div>Prev. owner &nbsp;<a class="text-prime font-bold underline capitalize"
+                                    href="/profile/FcpGSXLpNN546Aq0kK9J">DIPWT </a></div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col justify-between items-end pl-4 md:pl-0 space-y-2 md:space-y-5 text-sm md:text-lg">
+                        <div class="text-sm md:text-xl capitalize">Sale: <span
+                                class="text-auction font-semibold">share</span></div>
+                        <div class="md:text-2xl font-bold">£0.00</div>
+                        <div>Apr 06 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-2 py-2 md:py-4">
+                <div class="w-full flex items-center justify-between">
+                    <div class="flex items-center h-[7rem] md:h-48">
+                        <div class="transform scale-[0.50] md:scale-[0.75] w-40 -ml-12 md:-ml-[1.2rem]">
+                            <div class="h-56 !mx-0 bg-[#3E4550] relative musicCard mx-2 mb-2 cursor-pointer rounded-2xl bg-cover drop-shadow-lg"
+                                style="background: url(&quot;/assets/img/card_back.svg&quot;) center center no-repeat; width: 100%;">
+                                <div
+                                    class="appear relative h-full w-full rounded-[16px] bg-cover bg-center bg-no-repeat p-[10px]">
+                                    <div class="p-2" style="height: calc(100% - 3rem);">
+                                        <div class="w-full flex justify-between">
+                                            <div></div>
+                                            <div class="flex items-center space-x-2 md:space-x-3">
+                                                <div class="relative w-6 h-6"><span
+                                                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                            sizes="100vw"
+                                                           
+                                                            src="/assets/img/Chip-silver.svg" decoding="async"
+                                                            data-nimg="fill"
+                                                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span><svg
+                                                        class="absolute" viewBox="0 0 63 34" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg" style="bottom: -8px;">
+                                                        <g filter="url(#filter0_d_408_18464)">
+                                                            <rect width="31" height="2" rx="1"
+                                                                transform="matrix(1 0 0 -1 16 18)" fill="white"></rect>
+                                                        </g>
+                                                        <defs>
+                                                            <filter id="filter0_d_408_18464" x="0" y="0" width="63"
+                                                                height="34" filterUnits="userSpaceOnUse"
+                                                                color-interpolation-filters="sRGB">
+                                                                <feFlood flood-opacity="0" result="BackgroundImageFix">
+                                                                </feFlood>
+                                                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                                    result="hardAlpha"></feColorMatrix>
+                                                                <feMorphology radius="7" operator="dilate"
+                                                                    in="SourceAlpha"
+                                                                    result="effect1_dropShadow_408_18464">
+                                                                </feMorphology>
+                                                                <feOffset></feOffset>
+                                                                <feGaussianBlur stdDeviation="4.5"></feGaussianBlur>
+                                                                <feComposite in2="hardAlpha" operator="out">
+                                                                </feComposite>
+                                                                <feColorMatrix type="matrix"
+                                                                    values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0">
+                                                                </feColorMatrix>
+                                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                                    result="effect1_dropShadow_408_18464"></feBlend>
+                                                                <feBlend mode="normal" in="SourceGraphic"
+                                                                    in2="effect1_dropShadow_408_18464" result="shape">
+                                                                </feBlend>
+                                                            </filter>
+                                                        </defs>
+                                                    </svg></div>
+                                                <div class="relative w-6 h-6"><svg class="w-full h-full"
+                                                        viewBox="0 0 31 39" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M24.3263 2C27.3881 7.32067 29 13.3562 29 19.5C29 25.6438 27.3881 31.6793 24.3263 37M16.6516 5.85C19.0398 10.0001 20.2971 14.7078 20.2971 19.5C20.2971 24.2922 19.0398 28.9999 16.6516 33.15M9.32582 9.385C11.0527 12.4178 11.9618 15.858 11.9618 19.36C11.9618 22.862 11.0527 26.3022 9.32582 29.335M2 13.2C3.24452 15.0897 3.90432 17.2725 3.90432 19.5C3.90432 21.7275 3.24452 23.9103 2 25.8"
+                                                            stroke="#D9D9D9" stroke-width="4" stroke-linecap="round">
+                                                        </path>
+                                                    </svg></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-full flex items-center justify-center relative pt-0"
+                                            style="height: calc(100% - 3rem);">
+                                            <div
+                                                class="flex justify-center items-center rounded-full border-[3px] border-img-border">
+                                                <span
+                                                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 50px; height: 50px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                                                        src="https://user-gen-content.s3.amazonaws.com/stage/media/cover/TLS05GDORvv06udZgoAb.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXU2R3TSSJQYXHVNI%2F20230418%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20230418T162533Z&amp;X-Amz-Expires=18000&amp;X-Amz-Signature=a39fd317944acb7d3902308331e85d458ee04c74b072884c746ef02362fb2cbb&amp;X-Amz-SignedHeaders=host"
+                                                        decoding="async" data-nimg="fixed"
+                                                        class="rounded-full bg-gray-4 appear"
+                                                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 w-full">
+                                    <div class="flex flex-col items-center justify-center font-bold py-2 z-10">
+                                        <h2 class="text-white text-xl md:text-xl capitalize">Flow</h2>
+                                    </div>
+                                    <div class="w-full  px-2 rounded-b-2xl flex justify-between items-center z-0"
+                                        style="background: linear-gradient(94.2deg, rgba(255, 255, 255, 0) 13.99%, rgb(255, 255, 255) 47.58%, rgba(255, 255, 255, 0) 77.77%), rgb(153, 153, 153);">
+                                        <div class="font-bold"><span class="text-xs leading-relaxed">Powered By</span>
+                                            <p class="leading-tight capitalize text-base">Kulosa</p>
+                                        </div>
+                                        <div class="relative w-12 h-12 flex items-center justify-center"><span
+                                                style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                    src="/assets/img/logo-w.svg" decoding="async" data-nimg="fill"
+                                                    class="w-full h-full"
+                                                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"><noscript></noscript></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col justify-between space-y-2 md:space-y-5 text-sm md:text-lg -ml-8 md:ml-0 leff" leff>
+                            <div class="font-bold text-sm md:text-xl capitalize truncate">Flow - Kulosa</div>
+                            <div>Owned by <b>anonymous</b></div>
+                            <div>Prev. owner &nbsp;<a class="text-prime font-bold underline capitalize"
+                                    href="/profile/nYrHMwVlW6avdpOYs49h">Flow</a></div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col justify-between items-end pl-4 md:pl-0 space-y-2 md:space-y-5 text-sm md:text-lg">
+                        <div class="text-sm md:text-xl capitalize">Sale: <span
+                                class="text-auction font-semibold">share</span></div>
+                        <div class="md:text-2xl font-bold">£2,000.00</div>
+                        <div>Apr 09 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-2 py-2 md:py-4">
+                <div class="w-full flex items-center justify-between">
+                    <div class="flex items-center h-[7rem] md:h-48">
+                        <div class="transform scale-[0.50] md:scale-[0.75] w-40 -ml-12 md:-ml-[1.2rem]">
+                            <div class="h-56 !mx-0 bg-[#3E4550] relative musicCard mx-2 mb-2 cursor-pointer rounded-2xl bg-cover drop-shadow-lg"
+                                style="background: url(&quot;/assets/img/card_back.svg&quot;) center center no-repeat; width: 100%;">
+                                <div
+                                    class="appear relative h-full w-full rounded-[16px] bg-cover bg-center bg-no-repeat p-[10px]">
+                                    <div class="p-2" style="height: calc(100% - 3rem);">
+                                        <div class="w-full flex justify-between">
+                                            <div></div>
+                                            <div class="flex items-center space-x-2 md:space-x-3">
+                                                <div class="relative w-6 h-6"><span
+                                                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                            sizes="100vw"
+                                                          
+                                                            src="/assets/img/Chip-silver.svg" decoding="async"
+                                                            data-nimg="fill"
+                                                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span><svg
+                                                        class="absolute" viewBox="0 0 63 34" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg" style="bottom: -8px;">
+                                                        <g filter="url(#filter0_d_408_18464)">
+                                                            <rect width="31" height="2" rx="1"
+                                                                transform="matrix(1 0 0 -1 16 18)" fill="white"></rect>
+                                                        </g>
+                                                        <defs>
+                                                            <filter id="filter0_d_408_18464" x="0" y="0" width="63"
+                                                                height="34" filterUnits="userSpaceOnUse"
+                                                                color-interpolation-filters="sRGB">
+                                                                <feFlood flood-opacity="0" result="BackgroundImageFix">
+                                                                </feFlood>
+                                                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                                    result="hardAlpha"></feColorMatrix>
+                                                                <feMorphology radius="7" operator="dilate"
+                                                                    in="SourceAlpha"
+                                                                    result="effect1_dropShadow_408_18464">
+                                                                </feMorphology>
+                                                                <feOffset></feOffset>
+                                                                <feGaussianBlur stdDeviation="4.5"></feGaussianBlur>
+                                                                <feComposite in2="hardAlpha" operator="out">
+                                                                </feComposite>
+                                                                <feColorMatrix type="matrix"
+                                                                    values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0">
+                                                                </feColorMatrix>
+                                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                                    result="effect1_dropShadow_408_18464"></feBlend>
+                                                                <feBlend mode="normal" in="SourceGraphic"
+                                                                    in2="effect1_dropShadow_408_18464" result="shape">
+                                                                </feBlend>
+                                                            </filter>
+                                                        </defs>
+                                                    </svg></div>
+                                                <div class="relative w-6 h-6"><svg class="w-full h-full"
+                                                        viewBox="0 0 31 39" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M24.3263 2C27.3881 7.32067 29 13.3562 29 19.5C29 25.6438 27.3881 31.6793 24.3263 37M16.6516 5.85C19.0398 10.0001 20.2971 14.7078 20.2971 19.5C20.2971 24.2922 19.0398 28.9999 16.6516 33.15M9.32582 9.385C11.0527 12.4178 11.9618 15.858 11.9618 19.36C11.9618 22.862 11.0527 26.3022 9.32582 29.335M2 13.2C3.24452 15.0897 3.90432 17.2725 3.90432 19.5C3.90432 21.7275 3.24452 23.9103 2 25.8"
+                                                            stroke="#D9D9D9" stroke-width="4" stroke-linecap="round">
+                                                        </path>
+                                                    </svg></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-full flex items-center justify-center relative pt-0"
+                                            style="height: calc(100% - 3rem);">
+                                            <div
+                                                class="flex justify-center items-center rounded-full border-[3px] border-img-border">
+                                                <span
+                                                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 50px; height: 50px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                                                        src="https://user-gen-content.s3.amazonaws.com/stage/media/cover/xAXzRvLsgbTCDE0ftRPN.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXU2R3TSSJQYXHVNI%2F20230418%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20230418T162533Z&amp;X-Amz-Expires=18000&amp;X-Amz-Signature=78de4c8a1023dcf29ec9d490998c81eab2ce3b0d7dd8040e473280fa8ca6e641&amp;X-Amz-SignedHeaders=host"
+                                                        decoding="async" data-nimg="fixed"
+                                                        class="rounded-full bg-gray-4 appear"
+                                                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 w-full">
+                                    <div class="flex flex-col items-center justify-center font-bold py-2 z-10">
+                                        <h2 class="text-white text-xl md:text-xl capitalize">RapperX</h2>
+                                    </div>
+                                    <div class="w-full  px-2 rounded-b-2xl flex justify-between items-center z-0"
+                                        style="background: linear-gradient(94.2deg, rgba(255, 255, 255, 0) 13.99%, rgb(255, 255, 255) 47.58%, rgba(255, 255, 255, 0) 77.77%), rgb(153, 153, 153);">
+                                        <div class="font-bold"><span class="text-xs leading-relaxed">Powered By</span>
+                                            <p class="leading-tight capitalize text-base">2nd Sermon Remix</p>
+                                        </div>
+                                        <div class="relative w-12 h-12 flex items-center justify-center"><span
+                                                style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                    src="/assets/img/logo-w.svg" decoding="async" data-nimg="fill"
+                                                    class="w-full h-full"
+                                                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"><noscript></noscript></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col justify-between space-y-2 md:space-y-5 text-sm md:text-lg -ml-8 md:ml-0 leff">
+                            <div class="font-bold text-sm md:text-xl capitalize truncate">RapperX - 2nd Sermon Remix
+                            </div>
+                            <div>Owned by <b>Kesie Kwaku</b></div>
+                            <div>Prev. owner &nbsp;<a class="text-prime font-bold underline capitalize"
+                                    href="/profile/KNlFvBHg0lgM1YQTRdcD">RapperX</a></div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col justify-between items-end pl-4 md:pl-0 space-y-2 md:space-y-5 text-sm md:text-lg">
+                        <div class="text-sm md:text-xl capitalize">Sale: <span
+                                class="text-auction font-semibold">share</span></div>
+                        <div class="md:text-2xl font-bold">£50.00</div>
+                        <div>Apr 11 2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

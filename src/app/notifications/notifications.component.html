@@ -1,0 +1,137 @@
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .pagination button:hover {
+        background-color: #f2f2f2;
+    }
+
+    .pagination span {
+        margin: 0 10px;
+    }
+
+    .verticc {
+        display: flex;
+        margin-top: 10%;
+        align-items: center;
+    }
+</style>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div class="row">
+            <!-- <div class="col-md-8">
+                <form>
+                    <div class="input-group no-border verticc">
+                        <input type="text" value="" class="form-control"
+                            placeholder="Filter by name, email, mobile number, verification status..."
+                            [(ngModel)]="searchText">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i class="nc-icon nc-zoom-split"></i>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div> -->
+
+            <!-- <div class="col-md-4">
+                <div class="form-outline mb-4">
+                    <label>Choose Date period From:</label>
+                    <input type="date" class="form-control" placeholder="Enter Amount" />
+
+                </div>
+                <div class="form-outline mb-4">
+                    <label>Choose Date period To:</label>
+                    <input type="date" class="form-control" placeholder="Enter Amount" />
+
+                </div>
+
+                <button class="btn btn-info btn-block fa-lg gradient-custom-2 mb-3">
+
+                    Filter
+                </button>
+            </div> -->
+        </div>
+
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> NOTIFICATIONS</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                NOTIFICATION TITLE
+                            </th>
+                            <th>
+                                NOTIFICATION MESSAGE
+                            </th>
+                            <th>
+                               USER
+                            </th>
+                           
+                            <th>
+                                DATE
+                            </th>
+
+                        </thead>
+                        <tbody *ngFor="let item of user_list | filter:searchText; let i = index">
+                            <tr>
+                                <td>
+                                    {{i + 1}}
+                                </td>
+                                <td (click)="details(item)">
+                                    {{item.title}}
+                                </td>
+                                <td (click)="details(item)">
+                                    {{item.message}}
+                                </td>
+                                <td>
+                                    {{item.user_id}}
+                                </td>
+                            
+                                <td>
+                                    {{item.created_at | date: 'medium'}}
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="pagination"> -->
+                    <button class="btn btn-secondary btn-round" (click)="send()">Send Push Notification</button>
+
+                    
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<app-loader *ngIf="!loading"></app-loader>

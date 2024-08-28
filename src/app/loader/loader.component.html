@@ -1,0 +1,44 @@
+<style>
+.loader-wrapper {
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+background-color: #ffffffe8;
+display:flex;
+justify-content: center;
+align-items: center;
+}
+.loader {
+display: inline-block;
+width: 100px;
+height: 100px;
+position: relative;
+/* border: 4px solid #Fff; */
+animation: loader 2s infinite ease;
+}
+.loader-inner {
+vertical-align: top;
+display: inline-block;
+width: 100%;
+background-color: #fff;
+animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+0% { transform: rotate(0deg);}
+25% { transform: rotate(90deg);}
+50% { transform: rotate(180deg);}
+75% { transform: rotate(270deg);}
+100% { transform: rotate(360deg);}
+
+
+}
+
+    
+</style>
+
+<div class="loader-wrapper" >
+    <img src="assets/img/show.jpeg" class="loader">
+</div>

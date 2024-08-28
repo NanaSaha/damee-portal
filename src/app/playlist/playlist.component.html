@@ -1,0 +1,434 @@
+<style>
+    .tittle {
+        text-align: left;
+        font-size: 16px;
+        margin-top: 5%;
+    }
+
+    .card-category1 {
+        text-transform: capitalize;
+        font-weight: 900;
+        color: #BB0027;
+        font-size: 20px;
+        margin-bottom: 0rem;
+    }
+
+    .icon-big1 {
+        font-size: 3em;
+        min-height: 69px;
+        margin-top: 18%;
+    }
+
+    .card-stats .card-body {
+        padding: 0px !important;
+    }
+</style>
+<style>
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ffffffe8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        /* border: 4px solid #Fff; */
+        animation: loader 2s infinite ease;
+    }
+
+    .loader-inner {
+        vertical-align: top;
+        display: inline-block;
+        width: 100%;
+        background-color: #fff;
+        animation: loader-inner 2s infinite ease-in;
+    }
+
+    @keyframes loader {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(90deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        75% {
+            transform: rotate(270deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+
+
+    }
+
+    .row {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    div.sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+
+        font-size: 25px;
+    }
+
+    .avatar{
+    width: 30px !important;
+    height: 30px !important;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 15px;
+} 
+</style>
+
+
+<h2 style="font-weight: 900;text-align: center;">Damee PLAYLIST for <span style="color: #bb0027;">{{ currentMonth }}
+        {{ currentYear }} </span></h2>
+
+<div *ngIf="allPlay == true">
+
+<div *ngIf="showTable == false">
+    <button class="btn btn-primary btn-round" (click)="showTableVersion()">Show Table Version</button>
+
+    <div *ngFor="let item of user_list;">
+
+        <div class="row" style="padding-left: 15%;">
+        
+            <div class="col-lg-9 col-md-9 col-sm-9" *ngFor="let details of item.track_list;let i = index">
+                <div class="card card-stats">
+
+
+                    <div class="card-body ">
+                        <div class="row">
+
+
+                            <div class="col-1 col-md-1">
+                                <input type="checkbox" [value]="details.id" [(ngModel)]="isMasterSel[details.id]"
+                                    (change)="updateSelectedItems($event.target.checked, details.id)" class="moveUp" />
+
+
+
+                            </div>
+
+
+                            <div class="col-3 col-md-3" style="background-image: url({{details.owner.photo_url}});    background-size: contain;
+    background-repeat: no-repeat;">
+                            </div>
+
+
+                            <div class="col-6 col-md-6">
+                                <div class="tittle">
+                                    <p class="card-category1" style="text-align: center;">{{details.title}} </p>
+                                    <p class="card-title" style="text-align: center;">{{details.stage_name}}
+                                    <p>
+                                </div>
+                            </div>
+
+                            <div class="col-1 col-md-1" style="background-color: #BB0027;">
+                                <div class="icon-big1 text-center icon-warning" (click)="playAud(details.media_url)">
+                                    <i class="nc-icon nc-button-play text-warning"></i>
+                                </div>
+
+                            </div>
+                            <div class="col-1 col-md-1" style="background-color: #D9D9D9;">
+                                <div class="icon-big1 text-center icon-warning" (click)="deleteTrack(details.id)">
+                                    <i class="nc-icon nc-simple-remove text-warning"></i>
+                                </div>
+                            </div>
+
+
+                            <div id="footer">
+                                <div *ngIf="step">
+                                    <audio controls #myAudio style="display: flex;
+                                    justify-content: center;
+                                    text-align: center;
+                                    margin: 19px 0 0 20%;
+                                    width: 70%;">
+
+                                        <source src="{{audiofile}}" type="audio/mpeg">
+
+                                    </audio>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 sticky">
+                                    <div class="card card-stats">
+
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12" style="text-align: center;"
+                                                    *ngIf="selectedItemIds.length > 0">
+                                                    <button class="btn btn-warning btn-round"
+                                                        (click)="addToCompetition()">Add to
+                                                        Damee Live</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<div *ngIf="showTable == true">
+
+<button class="btn btn-primary btn-round" (click)="showTableVersion()">Show Grid Version</button>
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <div class=".card1">
+                <div class="card-header">
+                    <h4 class="card-title"> PLAYLIST</h4>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                          
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    IMAGE
+                                </th>
+                                <th>
+                                    TITLE
+                                </th>
+                                <th>
+                                    GENRE
+                                </th>
+                                <th>
+                                    STAGE NAME
+                                </th>
+
+                                <th>
+                                    PLAY COUNT
+                                </th>
+                                <th>
+                                    AVERAGE DAILY STREAMS
+                                </th>
+
+
+
+                            </thead>
+                        
+
+                                <tbody *ngFor="let item of user_list | filter:searchText">
+
+                                  
+
+                                    <tr *ngFor="let details of item.track_list;let i = index">
+
+                                        <td>
+                                            <input type="checkbox" [value]="details.id"
+                                                [(ngModel)]="isMasterSel[details.id]"
+                                                (change)="updateSelectedItems($event.target.checked, details.id)"
+                                                class="moveUp1" />
+                                        </td>
+                                        <td *ngIf="details.owner.photo_url">
+                                            <img class="avatar border-gray" src="{{details.owner.photo_url}}" alt="">
+
+                                        </td>
+                                        <td *ngIf="!details.owner.photo_url">
+
+                                            <img class="avatar border-gray" src="assets/img/show.jpeg">
+
+
+                                        </td>
+                                        <td>
+
+                                            {{details.title}}
+                                            
+                                        </td>
+                                        <td>
+                                        {{details.genre}}
+                                            
+                                        </td>
+                                        <td>
+
+                                            {{details.stage_name}}
+                                        </td>
+
+                                        <td>
+
+                                            {{details.play_count}}
+                                        </td>
+                                        <td>
+                                        
+                                            {{details.average_daily_streams}}
+                                        </td>
+
+                                        
+
+
+
+
+                                        <td (click)="details(item)">
+                                            {{details.created_at | date:'medium'}}
+                                        </td>
+
+
+                                        <td>
+                                            <div class="update ml-auto mr-auto">
+                                                <button class="btn btn-warning btn-round"
+                                                    (click)="playAud(details.media_url)">Play</button>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <button class="btn btn-primary btn-round"
+                                                (click)="deleteTrack(details.id)">Delete </button>
+
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                                <div id="footer">
+                                    <div *ngIf="step">
+                                        <audio controls #myAudio style="display: flex;
+                                                                justify-content: center;
+                                                                text-align: center;
+                                                                margin: 19px 0 0 20%;
+                                                                width: 70%;">
+
+                                            <source src="{{audiofile}}" type="audio/mpeg">
+
+                                        </audio>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 sticky">
+                                        <div class="card card-stats">
+
+                                            <div class="card-body ">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-12" style="text-align: center;"
+                                                        *ngIf="selectedItemIds.length > 0">
+                                                        <button class="btn btn-warning btn-round"
+                                                            (click)="addToCompetition()">Add to
+                                                            Damee Live</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+
+
+    <div class="row">
+        <div class="update ml-auto mr-auto">
+            <button class="btn btn-primary btn-round" (click)="showPlay()">Create New Playlist</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row" *ngIf="allPlay == false">
+    <div class="col-md-6">
+
+        <div class="card card-user">
+            <div class="icon-big text-center icon-warning" style="margin-left: 90%;
+    font-size: 25px;" (click)="showPlay()">
+                <i class="nc-icon nc-simple-remove text-primary"></i>
+            </div>
+
+            <div class="card-header">
+                <h5 class="card-title">Create New Playlist</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" formControlName="title" class="form-control"
+                                    placeholder="Playlist Title">
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description</label>
+
+                                <textarea type="text" formControlName="description" class="form-control"
+                                    placeholder="Description"> </textarea>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Create Playlist</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<app-loader *ngIf="!loading"></app-loader>

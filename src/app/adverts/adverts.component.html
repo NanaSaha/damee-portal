@@ -1,0 +1,118 @@
+<style>
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ffffffe8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        /* border: 4px solid #Fff; */
+        animation: loader 2s infinite ease;
+    }
+
+    .loader-inner {
+        vertical-align: top;
+        display: inline-block;
+        width: 100%;
+        background-color: #fff;
+        animation: loader-inner 2s infinite ease-in;
+    }
+
+    @keyframes loader {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(90deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        75% {
+            transform: rotate(270deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+
+
+    }
+</style>
+
+<!-- <h2 style="font-weight: 900;">OUR COLLECTIONS</h2> -->
+
+
+
+<div class="flex justify-between items-center font-semibold mb-5 py-2">
+    <h2 class="text-2xl md:text-3xl font-bold">Adverts</h2>
+</div>
+
+
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+
+    <div *ngFor="let item of user_list;">
+        <div ngxSlickItem style="padding-bottom: 20px;" class="slide">
+         
+ <h4  *ngIf="item.is_active == true"> Published</h4> 
+<h4 *ngIf="item.is_active == false">Not Published</h4>
+<!-- <button class="nc-simple-remove nc-icon" style="font-size: 30px;
+    position: relative;
+    margin-left: 80%;
+    color: darkred;" (click)="delete(item.id)"></button> -->
+    
+
+            <div>
+                <div style="width: 100%; display: inline-block;">
+
+
+                    <div class="h-[25rem] sm:h-[22rem] md:h-[25rem] relative musicCard mx-2 cursor-pointer rounded-2xl bg-cover bg-center bg-no-repeat"
+                        style="background: url({{item.image_url}});">
+
+
+                    </div>
+                </div>
+               
+                <button class="btn btn-warning btn-round" (click)="publish(item.id,false)" *ngIf="item.is_active == true" >UnPublish</button>
+                <button class="btn btn-info btn-round" (click)="publish(item.id,true)"*ngIf="item.is_active == false">Publish</button>
+                <button class="btn btn-danger btn-round" (click)="delete(item.id)"> Delete Advert</button>
+            </div>
+
+
+        </div>
+    </div>
+  
+
+    <br>
+
+</ngx-slick-carousel>
+
+
+
+
+
+
+
+
+
+<br>
+
+
+<button class="btn btn-primary btn-round" (click)="open()">Upload New Advert</button>
+
+<div class="loader-wrapper" *ngIf="!loading">
+    <img src="assets/img/show.jpeg" class="loader">
+</div>

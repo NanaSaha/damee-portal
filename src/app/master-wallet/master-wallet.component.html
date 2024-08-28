@@ -1,0 +1,185 @@
+<style>
+    .spp {
+        text-align: center !important;
+        font-size: 2em;
+        margin: 30px;
+    }
+
+            .verticc{
+        display: flex;
+       margin-top: 10%;
+    align-items: center;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-8">
+        <form>
+            <div class="input-group no-border verticc">
+                <input type="text" value="" class="form-control" placeholder="Filter by third party,payment method,narration status..."
+                    [(ngModel)]="searchText">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <i class="nc-icon nc-zoom-split"></i>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-outline mb-4">
+            <label>Choose Date period From:</label>
+            <input type="date" class="form-control" placeholder="Enter Amount" />
+
+        </div>
+        <div class="form-outline mb-4">
+            <label>Choose Date period To:</label>
+            <input type="date" class="form-control" placeholder="Enter Amount" />
+
+        </div>
+
+        <button class="btn btn-info btn-block fa-lg gradient-custom-2 mb-3">
+
+            Filter
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+     
+     
+        <div class="card">
+            <div class="card-header" >
+                <h4 class="card-title"> Damee WALLET</h4>
+                    <div class="update ml-auto mr-auto">
+                        <button class="btn btn-warning btn-round" (click)="topup('nc-atom')">Add Money To Wallet</button>
+                    </div>
+                <!-- <h4> TOTAL BALANCE:<span
+                        style="color:brown;font-weight: 900;">£{{user_list?.transactions?.balance}}</span> </h4> -->
+            </div>
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                No
+                            </th>
+                            <!-- <th>
+                                IMAGE
+                            </th>
+                            <th>
+                                NAME OF USER
+                            </th>
+                            <th>
+                                MOBILE NUMBER
+                            </th> -->
+                            <!-- <th>
+                                THIRD PARY PLATFORM
+                            </th> -->
+                            <th>
+                                REVENUE AMOUNT
+                            </th>
+                            <th>
+                                PAYMENT METHOD
+                            </th>
+                            <th>
+                                NARRATION
+                            </th>
+                            <th>
+                                TRANSACTION TYPE
+                            </th>
+
+
+                            <th>
+                                TRANSACTION DATE
+                            </th>
+                          
+                            
+
+                        </thead>
+                        <tbody *ngFor="let item of user_list | filter:searchText; let i = index">
+                            <tr>
+                                <td>
+                                    {{i + 1}}
+                                </td>
+                                <!-- <td *ngIf="item.owner.photo_url">
+                                    <img class="avatar border-gray" src="{{item.owner?.photo_url}}" alt="">
+
+                                </td>
+
+                                <td *ngIf="!item.owner.photo_url">
+
+                                    <img class="avatar border-gray" src="assets/img/show.jpeg" alt=""
+                                        (click)="details(item)">
+
+                                </td> 
+                                <td>
+                                    {{item.owner?.full_name}}
+                                </td>
+                                <td>
+                                    {{item.owner?.mobile_number}}
+                                </td> -->
+                                <!-- <td>
+                                    {{item?.third_party_type}}
+                                </td> -->
+
+                                
+                                <td>
+                                    £{{item?.amount}}
+                                </td>
+                                <td>
+                                    {{item?.payment_method}}
+                                </td>
+
+                                <td>
+                                    {{item?.narration}}
+                                </td>
+                                <td *ngIf="item?.transaction_type == 'credit'">
+
+                                    <p style="color:rgb(3, 149, 95);font-weight: 900;">{{item?.transaction_type}}</p>
+                                </td>
+                                <td *ngIf="item?.transaction_type == 'debit'">
+
+                                    <p style="color:brown;font-weight: 900;">{{item?.transaction_type}} <i
+                                            class="nc-icon nc-arrow text-warning"></i></p>
+                                </td>
+
+
+                                <td>
+                                    {{item?.created_at | date:'medium'}}
+                                </td>
+
+
+                                <td>
+                                    <p style="color:rgb(36, 165, 11);font-weight: 900;">{{item?.status}}</p>
+                                </td>
+                                <!-- <td>
+                                    <div class="update ml-auto mr-auto">
+                                        <button class="btn btn-warning btn-round" (click)="topup(item.user_id)">Virtual
+                                            TopUp</button>
+                                    </div>
+                                </td> -->
+
+
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="update ml-auto mr-auto">
+                <button class="btn btn-warning btn-round" (click)="topup('nc-atom')">Add Money To Wallet</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<app-loader *ngIf="!loading"></app-loader>

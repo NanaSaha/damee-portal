@@ -1,0 +1,91 @@
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .pagination button:hover {
+        background-color: #f2f2f2;
+    }
+
+    .pagination span {
+        margin: 0 10px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search by name, email, mobile number..."
+                    [(ngModel)]="searchText">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <i class="nc-icon nc-zoom-split"></i>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> SUPPORT/TICKETS</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                No
+                            </th>
+                         
+                            <th>
+                                FULL NAME
+                            </th>
+                            <th>
+                                EMAIL
+                            </th>
+                            <th>
+                              SUBJECT 
+                            </th>
+                            <th>
+                              ENQUIRIIES
+                            </th>
+                            <th>
+                              STATUS
+                            </th>
+                                <th>
+                                DATE
+                                </th>
+
+                        </thead>
+                        <tbody *ngFor="let item of user_list | filter:searchText; let i = index">
+                            <tr>
+                    
+
+                
+
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+          
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

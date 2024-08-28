@@ -1,0 +1,194 @@
+<style>
+    .spp {
+        text-align: center !important;
+        font-size: 2em;
+        margin: 30px;
+    }
+
+            .verticc{
+        display: flex;
+       margin-top: 10%;
+    align-items: center;
+    }
+</style>
+<div class="mb-6 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100"
+    (click)="goBack()">
+    <svg class="h-6 w-6" viewBox="0 0 15 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 1.58887L2 15.3367L14 29.0846" stroke="black" stroke-width="2"></path>
+    </svg>
+</div>
+<div class="row">
+    <div class="col-md-12">
+<div class="row">
+    <div class="col-md-8">
+        <form>
+            <div class="input-group no-border verticc">
+                <input type="text" value="" class="form-control"
+                    placeholder="Filter by source,card owner, status..." [(ngModel)]="searchText">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <i class="nc-icon nc-zoom-split"></i>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-outline mb-4">
+            <label>Choose Date period From:</label>
+            <input type="date" class="form-control" placeholder="Enter Amount" />
+
+        </div>
+        <div class="form-outline mb-4">
+            <label>Choose Date period To:</label>
+            <input type="date"  class="form-control" placeholder="Enter Amount" />
+
+        </div>
+
+        <button class="btn btn-info btn-block fa-lg gradient-custom-2 mb-3">
+
+            Filter
+        </button>
+    </div>
+</div>
+       
+        <div class="card">
+            <div class="card-header" style="display: inline-flex;
+    gap: 50%;">
+                <h4 class="card-title"> ALL CARD REVENUES</h4>
+                <!-- <h4> TOTAL BALANCE:<span
+                        style="color:brown;font-weight: 900;">£{{user_list?.transactions?.balance}}</span> </h4> -->
+            </div>
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                CARD IMAGE
+                            </th>
+                            <th>
+                                CARD OWNER
+                            </th>
+                            <th>
+                                SOURCE
+                            </th>
+                            <th>
+                                AMOUNT
+                            </th>
+                            <th>
+                                AMOUNT DISTRIBUTABLE
+                            </th>
+                            <th>
+                                PERIOD FROM
+                            </th>
+                            <th>
+                                PERIOD TO
+                            </th>
+                            <th>
+                                REVENUE RECORDED ON
+                            </th>
+                            
+                            
+                            <th>
+                                STATUS
+                            </th>
+                            <th>
+                                DISTRIBUTION STATUS
+                            </th>
+
+                        </thead>
+                      <tbody *ngFor="let item of user_list| filter:searchText; let i = index">
+                            <tr>
+                                <td>
+                                    {{i + 1}}
+                                </td>
+                                <td *ngIf="item.cover_art_url" (click)="showDistribution(item.id)">
+                                    <img class="avatar border-gray" src="{{item.cover_art_url}}" alt="" >
+                                
+                                </td>
+                                <td *ngIf="!item.cover_art_url" (click)="showDistribution(item.id)">
+                                
+                                    <img class="avatar border-gray" src="assets/img/show.jpeg" alt="" >
+                                
+                                
+                                </td>
+                                
+                           
+                                <td>
+                                    {{item.card.owner.full_name}}<br>
+                                    {{item.card.owner.mobile_number}}<br>
+                                </td>
+                                    <td>
+                                        {{item?.source}}
+                                    </td>
+                                <td>
+                                    £{{item?.amount}}
+                                </td>
+                                <td>
+                                    £{{item?.amount_distributable}}
+                                </td>
+                                <td>
+                                    {{item?.period_from | date:'medium'}}
+                                </td>
+                                <td>
+                                    {{item?.period_to | date:'medium'}}
+                                </td>
+                                <td>
+                                    {{item?.created_at | date:'medium'}}
+                                </td>
+
+                                <td *ngIf="item?.status != 'pending'">
+                                
+                                    <p style="color:rgb(3, 149, 95);font-weight: 900;">{{item?.status}}</p>
+                                </td>
+                                <td *ngIf="item?.status == 'pending'">
+                                
+                                    <p style="color:brown;font-weight: 900;">{{item?.status}} <i class="nc-icon nc-arrow text-warning"></i>
+                                    </p>
+                                </td>
+
+                                <td *ngIf="item?.distributed != false">
+                                
+                                    <p style="color:rgb(3, 149, 95);font-weight: 900;">Distributed</p>
+                                </td>
+                                <td *ngIf="item?.distributed == false">
+                                
+                                    <p style="color:brown;font-weight: 900;">Not Distributed <i class="nc-icon nc-arrow text-warning"></i>
+                                    </p>
+                                </td>
+                                
+                            
+                                <td *ngIf="item?.distributed == false">
+                                    <div class="update ml-auto mr-auto">
+                                        <button class="btn btn-warning btn-round" (click)="distribute(item.id)">DISTRUBUTE</button>
+                                    </div>
+                                </td>
+
+
+
+
+                            </tr>
+
+                        </tbody> 
+                    </table>
+                </div>
+
+                <!-- <button class="btn btn-primary btn-round" (click)="upload()">Upload Revenue</button> -->
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<app-loader *ngIf="!loading"></app-loader>
+
+
+

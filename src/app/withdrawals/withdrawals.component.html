@@ -1,0 +1,199 @@
+<style>
+    .spp {
+        text-align: center !important;
+        font-size: 2em;
+        margin: 30px;
+    }
+
+    .verticc {
+        display: flex;
+        margin-top: 10%;
+        align-items: center;
+    }
+
+        .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .pagination button:hover {
+        background-color: #f2f2f2;
+    }
+
+    .pagination span {
+        margin: 0 10px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-8">
+        <form>
+            <div class="input-group no-border verticc">
+                <input type="text" value="" class="form-control"
+                    placeholder="Filter by NARRATION, Transaction Type, status..." [(ngModel)]="searchText">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <i class="nc-icon nc-zoom-split"></i>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="col-md-4">
+            <div class="form-outline mb-4">
+                <label>Choose Date period From:</label>
+                <input type="date" [(ngModel)]="from" class="form-control" placeholder="Date From" />
+        
+            </div>
+            <div class="form-outline mb-4">
+                <label>Choose Date period To:</label>
+                <input type="date" [(ngModel)]="to" class="form-control" placeholder="Date To" />
+        
+            </div>
+        
+            <button class="btn btn-info btn-block fa-lg gradient-custom-2 mb-3" (click)="filerDate(from,to)">
+        
+                Filter
+            </button>
+        </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div class="card">
+            <div class="card-header" style="display: inline-flex;
+    gap: 50%;">
+                <h4 class="card-title">WITHDRAWALS</h4>
+
+            </div>
+
+
+            <div class="card-body">
+
+
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                No
+                            </th>
+                            <th (click)="sort('full_name')">
+                               NAME
+                            </th>
+                            <th (click)="sort('source_type')">
+                                SOURCE TYPE
+                            </th>
+                            <th (click)="sort('destination_type')">
+                                DESTINATION TYPE
+                            </th>
+
+                            <th>
+                                REFERENCE NUMBER
+                            </th>
+                            <th (click)="sort('amount')">
+                                AMOUNT
+                            </th>
+                            <th (click)="sort('status')">
+                                STATUS
+                            </th>
+                            <th>
+                                DESTINATION CURRENCY
+                            </th>
+
+                            <th (click)="sort('created_at')">
+                                TRANSACTION DATE
+                            </th>
+
+                        </thead>
+                        <tbody *ngFor="let item of user_list| orderBy: sortKey: sortDirection  |  filter:searchText; let i = index">
+                            <tr>
+                                <td>
+                                    {{i + 1}}
+                                </td>
+                                <td>
+                                    {{item.full_name}}
+                                </td>
+
+                                <td>
+                                    {{item.source_type}}
+                                </td>
+
+                                <td>
+                                    {{item?.destination_type}}
+                                </td>
+                                <td>
+                                    {{item?.external_reference}}
+                                </td>
+
+                                <td>
+                                    {{item?.amount}}
+                                </td>
+                                <td *ngIf="item?.status == 'completed'">
+                                    <p style="color:rgb(36, 165, 11);font-weight: 900;">{{item?.status}}</p>
+                                </td>
+                                <td *ngIf="item?.status != 'completed'">
+                                    <p style="color:rgb(161, 41, 5);font-weight: 900;">{{item?.status}}</p>
+                                </td>
+                                <td>
+                                    {{item?.destination_currency}}
+                                </td>
+
+                                <td>
+                                    {{item?.created_at | date:'medium'}}
+                                </td>
+
+
+                                <!-- <td *ngIf="item?.transaction_type == 'credit'">
+
+                                    <p style="color:rgb(3, 149, 95);font-weight: 900;">{{item?.transaction_type}}</p>
+                                </td>
+                                <td *ngIf="item?.transaction_type == 'debit'">
+
+                                    <p style="color:brown;font-weight: 900;">{{item?.transaction_type}} <i
+                                            class="nc-icon nc-arrow text-warning"></i></p>
+                                </td> -->
+
+
+
+
+
+
+
+
+
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+                    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+                    <span>{{ currentPage }} / {{ last_page }}</span>
+                    <button (click)="nextPage()" [disabled]="currentPage === last_page">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<app-loader *ngIf="!loading"></app-loader>

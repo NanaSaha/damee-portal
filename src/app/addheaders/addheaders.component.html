@@ -1,0 +1,101 @@
+<section class="h-100 gradient-form" style="background-color: #cfc1c104;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-12">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-12">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="assets/img/show.jpeg" style="width: 85px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">ADD HEADERS</h4>
+                                </div>
+
+                                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+                                    <div class="form-outline mb-4">
+                                        <label class="image-upload-container btn-bwm">
+                                            <span>Select Feature Image</span>
+                                            <input #imageInput type="file" accept="image/*"
+                                                (change)="processFile(imageInput)" formControlName="image">
+                                        </label>
+
+                                    </div>
+                                    <div *ngIf="selectedFile" class="img-preview-container">
+
+                                        <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+                                            [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+                                        </div>
+
+                                        <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+                                            <div class="img-spinning-circle"></div>
+                                        </div>
+
+                                        <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image
+                                            Uploaded Succesfuly!</div>
+                                        <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image
+                                            Upload Failed!</div>
+                                    </div>
+
+
+
+                                    <div class="form-outline mb-4">
+                                        <label>Enter Title</label>
+                                        <input type="text" formControlName="title" class="form-control" />
+
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label>Header Content</label>
+                                        <textarea row="8" formControlName="content" class="form-control"
+                                            id="large-textarea"></textarea>
+
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label>CTA text</label>
+                                        <input type="text" formControlName="cta_text" class="form-control" />
+                                    
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label>CTA Link</label>
+                                        <input type="text" formControlName="cta_link" class="form-control" />
+                                    
+                                    </div>
+
+                                 
+
+
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+
+
+                                        <button class="btn btn-info btn-block fa-lg gradient-custom-2 mb-3"
+                                            [disabled]="!this.form.valid">
+
+                                            Add Headers
+                                        </button>
+
+                                    </div>
+
+
+
+
+
+
+
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

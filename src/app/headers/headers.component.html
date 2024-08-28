@@ -1,0 +1,147 @@
+<style>
+    .spp {
+        text-align: center !important;
+        font-size: 2em;
+        margin: 30px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search by name, email, mobile number..."
+                    [(ngModel)]="searchText">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <i class="nc-icon nc-zoom-split"></i>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="card">
+            <div class="card-header" style="display: inline-flex;
+    gap: 50%;">
+                <h4 class="card-title"> HEADERS ON APP</h4>
+                <!-- <h4> TOTAL BALANCE:<span
+                        style="color:brown;font-weight: 900;">£{{user_list?.transactions?.balance}}</span> </h4> -->
+            </div>
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                TITLE
+                            </th>
+                           
+                            <th>
+                                CONTENT
+                            </th>
+                            <th>
+                                FEATURE IMAGE
+                            </th>
+                            <th>
+                               CTA TEXT
+                            </th>
+                            <th>
+                                CTA LINK
+                            </th>
+                            <!-- <th>
+                                CREATED ON
+                            </th>
+                            <th>
+                                ADDED BY
+                            </th>
+                            <th>
+                                STATUS
+                            </th> -->
+
+
+                        </thead>
+                        <tbody *ngFor="let item of user_list| filter:searchText; let i = index">
+                            <tr>
+                                <td>
+                                    {{i + 1}}
+                                </td>
+                                <td>
+                                    {{item.title}}<br>
+
+                                </td>
+                               
+                              
+                                <td>
+                                    {{item?.content | slice:0:60}}
+                                </td>
+                                <td *ngIf="item.photo_url">
+                                    <img class="avatar border-gray" src="{{item.photo_url}}" alt="">
+
+                                </td>
+                                <td *ngIf="!item.photo_url">
+
+                                    <img class="avatar border-gray" src="assets/img/show.jpeg" alt="">
+
+
+                                </td>
+                                <td>
+                                    {{item?.cta_text}}
+                                </td>
+                                <td>
+                                    {{item?.cta_link}}
+                                </td>
+                                <!-- <td>
+                                    {{item?.created_at | date:'medium'}}
+                                </td>
+
+
+                                <td>
+                                    {{item?.added_by}}
+                                </td> -->
+                                <!-- <td *ngIf="item?.is_active != false">
+
+                                    <p style="color:rgb(3, 149, 95);font-weight: 900;">Active</p>
+                                </td>
+                                <td *ngIf="item?.is_active == false">
+
+                                    <p style="color:brown;font-weight: 900;">Not Active <i
+                                            class="nc-icon nc-arrow text-warning"></i>
+                                    </p>
+                                </td> -->
+
+                                <td>
+                                    <div class="update ml-auto mr-auto">
+                                        <button class="btn btn-danger btn-round"
+                                            (click)="delete(item.id)">DELETE</button>
+                                    </div>
+                                </td>
+
+
+
+
+
+
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="update ml-auto mr-auto">
+                <button class="btn btn-warning btn-round" (click)="new_blog()">ADD NEW HEADER</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<app-loader *ngIf="!loading"></app-loader>

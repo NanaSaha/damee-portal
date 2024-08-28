@@ -1,0 +1,296 @@
+<style>
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ffffffe8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        /* border: 4px solid #Fff; */
+        animation: loader 2s infinite ease;
+    }
+
+    .loader-inner {
+        vertical-align: top;
+        display: inline-block;
+        width: 100%;
+        background-color: #fff;
+        animation: loader-inner 2s infinite ease-in;
+    }
+
+    @keyframes loader {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(90deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        75% {
+            transform: rotate(270deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+
+
+    }
+
+    .avatar {
+        width: 30px !important;
+        height: 30px !important;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+</style>
+
+<!-- NEW LIST-->
+<h4 style="font-size: 30px;text-align: center;font-weight: 800;"> Marketplace</h4>
+<div *ngIf="showTable == false">
+    <button class="btn btn-primary btn-round" (click)="showTableVersion()">Show Table Version</button>
+    <div class="min-h-[20rem] rounded-10 bg-white p-20p pb-28 pt-8 md:min-h-[40rem] md:py-20p">
+
+        <div class="appear grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+            <div class="relative grid w-full cursor-pointer grid-cols-1 gap-2 rounded-10 border border-gray-2 p-2 hover:!bg-white/20 md:gap-10p md:p-15p"
+                *ngFor="let item of user_list;">
+                <div class="flex w-full items-center justify-start gap-15p" (click)="goTransaction(item.id)">
+                    <div class="relative h-[100px] w-[100px] md:h-[120px] md:w-[120px]">
+                        <span
+                            style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                            
+                            <img
+                                alt="RapperX" sizes="100vw" srcset="{{item.card.cover_art_url}}"
+                                src="{{item.card.cover_art_url}}" decoding="async" data-nimg="fill"
+                                class="appear rounded-10 bg-gray-2 object-cover"
+                                style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;" *ngIf="item.card.cover_art_url" >
+
+                                <img alt="RapperX" sizes="100vw" srcset="{{item.card.cover_art_url}}" src="assets/img/show.jpeg" decoding="async"
+                                    data-nimg="fill" class="appear rounded-10 bg-gray-2 object-cover"
+                                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                                    *ngIf="!item.card.cover_art_url">
+                            
+                            
+                            
+                            </span>
+                    </div>
+                    <div class="grid w-[55%] grid-cols-1 md:w-[59%] gap-1">
+                        <div class="flex items-center gap-20p">
+                            <div><span class="text-[12px] font-medium leading-tight">Powered by</span><br><span
+                                    class="truncate text-lg font-bold leading-tight">{{item.card.song.title}}</span>
+                            </div>
+                            <div class="relative"></div>
+                        </div>
+                        <div class="!text-[12px] inline-flex items-center justify-start gap-2.5 self-stretch"><span
+                                class="font-medium">Created by</span><a class="font-bold text-blue-600 underline"
+                                href="#">{{item.stage_name}}</a></div>
+                        <div class="border-t border-gray-2"></div>
+                        <div class="relative flex w-full items-center justify-between leading-none">
+                            <div class="!text-[12px]"><span class="font-medium">Value: {{item.listing_target}}
+                                    {{item.list_percentage}}% </span> <span class="font-bold"></span></div>
+                            <div class="relative">
+                                <div class="relative flex h-[35px] w-[35px] items-center justify-center"><img
+                                        src="/assets/img/gaugey.png" class="appear absolute w-full rounded-full"><span
+                                        class="pt-[2px] text-sm font-bold md:text-xl">2</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 p-10p !text-[10px] md:gap-10p md:!text-[12px]"
+                    style="background-color: #eeeeee!important;" (click)="goTransaction(item.id)">
+                    <div><span class="font-medium ">Current Owner</span> <br><a class="font-bold underline text-prime"
+                            href="#">{{item.stage_name}}</a></div>
+                    <div class="shrink grow basis-0 md:pl-5"><span
+                            class="text-[10px] font-medium leading-tight md:text-[12px]">Available for<br><span
+                                class="font-bold">{{item.card.card_meta.listing_type}}</span></span></div>
+                    <!-- <div class="md:pr-4">
+                    <button
+                        class="flex items-center justify-center h-10 min-w-[10rem] btn !h-6 !w-20 !min-w-0 !rounded-full !uppercase md:!h-8"
+                        type="button">trade</button></div> -->
+                </div>
+                <div class="flex items-center" (click)="goTransaction(item.id)">
+                    <div class="relative flex h-[32px] items-center" style="width: 22px;"></div>
+                    <div class="pl-10p text-[12px] leading-snug"><span class="font-bold">{{item.card.song.title}}
+                        </span><span class="font-medium">is currently listed by </span><span
+                            class="font-bold">{{item.child_listing_count}} person</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div *ngIf="showTable == true">
+
+    <button class="btn btn-primary btn-round" (click)="showTableVersion()">Show Grid Version</button>
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <div class=".card1">
+                <div class="card-header">
+                    <h4 class="card-title"> MARKETPLACE</h4>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                                <th>
+                                   No
+                                </th>
+
+                                <th>
+                                    IMAGE
+                                </th>
+                                <th>
+                                    POWERED BY
+                                </th>
+                                <th>
+                                    CREATED BY
+                                </th>
+
+                                <th>
+                                  LIST TARGET
+                                </th>
+                                <th>
+                                    LIST PERCENTAGE
+                                </th>
+                                <th>
+                                    CURRENT OWNER
+                                </th>
+                                <th>
+                                   LISTING TYPE
+                                </th>
+                                <!-- <th>LISTED BY</th> -->
+                                <th>LEASE DURATION YEARS</th>
+                                <!-- <th>PERCENTAGE PER SHARE</th> -->
+                                <th>PERCENTAGE REMAINING</th>
+                                <th>PRICE PER SHARE</th>
+                                <th>SHARES</th>
+                                <th>SHARES REMAINING</th>
+                                <th>CARD VALUE</th>
+                                    <th>STATUS</th>
+                                <th>CREATED AT</th>
+
+
+                            </thead>
+
+
+                            <tbody *ngFor="let item of user_list | filter:searchText;let i = index">
+
+                                <tr>
+<td (click)="goTransaction(item.id)">
+
+    {{i + 1}}
+</td>
+
+                                    <td *ngIf="item.card.cover_art_url" (click)="goTransaction(item.id)">
+                                        <img class="avatar border-gray" src="{{item.card.cover_art_url}}" alt="">
+
+                                    </td>
+                                    <td *ngIf="!item.card.cover_art_url" (click)="goTransaction(item.id)">
+
+                                        <img class="avatar border-gray" src="assets/img/show.jpeg">
+
+
+                                    </td>
+                                    <td (click)="goTransaction(item.id)">
+
+                                        {{item.card.song.title}}
+                                    </td>
+                                    <td>
+
+                                        {{item.stage_name}}
+                                    </td>
+
+                                    <td>
+
+                                        {{item.listing_target}} 
+                                    </td>
+                                    <td *ngIf="item.list_percentage">
+                                    
+                                    {{item.list_percentage}}%
+                                    </td>
+
+                                    <td *ngIf="!item.list_percentage">
+                                    
+                                       0%
+                                    </td>
+                                    
+
+                                    <td>{{item.stage_name}}</td>
+                                    <td>{{item.card.card_meta.listing_type}}</td>
+
+                                    <!-- <td>{{item.child_listing_count}} person</td> -->
+
+                                    <td>{{item.lease_duration_years}}</td>
+                                    <!-- <td>{{item.percentage_per_share}}</td> -->
+                                    <td *ngIf="item.percentage_remaining">{{item.percentage_remaining}}%</td>
+                                        <td *ngIf="!item.percentage_remaining">0%</td>
+                                    <td>{{item.price_per_share}}</td>
+                                    <td>{{item.shares}}</td>
+                                    <td>{{item.shares_remaining}}</td>
+                                    <td>{{item.card_value}}</td>
+                                    <td style="color:rgb(3, 149, 95);font-weight: 900;">{{item.listing_status}}</td>
+                                    
+                                    
+                                    <td>{{item.created_at | date: 'medium'}}</td>
+
+
+
+
+                                    <td>
+                                        <div class="update ml-auto mr-auto">
+                                            <button class="btn btn-danger btn-round">Cancel</button>
+                                        </div>
+                                    </td>
+
+                                 
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="loader-wrapper" *ngIf="!loading">
+    <img src="assets/img/show.jpeg" class="loader">
+</div>

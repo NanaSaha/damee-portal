@@ -1,0 +1,143 @@
+<style>
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ffffffe8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        position: relative;
+
+        animation: loader 2s infinite ease;
+    }
+
+    .loader-inner {
+        vertical-align: top;
+        display: inline-block;
+        width: 100%;
+        background-color: #fff;
+
+    }
+
+
+    .h-56 {
+        height: 13rem !important;
+    }
+
+    h2,
+    .h2 {
+        font-size: 2.5em;
+        margin-bottom: 0px !important;
+    }
+
+    .leff {
+        margin-left: 50px;
+    }
+</style>
+
+
+<div class="mb-6 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100"
+    (click)="goBack()">
+    <svg class="h-6 w-6" viewBox="0 0 15 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 1.58887L2 15.3367L14 29.0846" stroke="black" stroke-width="2"></path>
+    </svg>
+</div>
+<h4 style="font-size: 30px;text-align: center;font-weight: 800;"> Marketplace Listing Details</h4>
+<div class="min-h-[20rem] rounded-10 bg-white p-20p pb-28 pt-8 md:min-h-[40rem] md:py-20p" style="width: 70%;
+    margin-left: 10%;">
+
+    <div class="grid w-full grid-cols-1 gap-20p" (click)="gotoCardDetails(market_details[0]?.card?.id)" >
+        <div class="flex w-full items-center justify-start gap-15p">
+            <div class="relative h-[98px] w-[100px] md:h-[187px] md:w-[189px]"><span
+                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;  inset: 0px;"><img
+                     sizes="100vw"
+                        srcset="{{market_details[0]?.card?.cover_art_url}}"
+                        src="{{market_details[0]?.card?.cover_art_url}}"
+                        decoding="async" data-nimg="fill" class="appear rounded-10 bg-gray-2 object-cover"
+                        ></span>
+            </div>
+            <div class="grid w-[55%] grid-cols-1 md:w-[59%] gap-15p">
+                <div class="flex items-center gap-20p">
+                    <div><span class="text-[14px] font-medium leading-tight">Powered by</span><br><span
+                            class="truncate text-[26px] font-bold leading-tight">{{market_details[0]?.card?.song.title}}</span></div>
+                    <div class="relative">
+                        <div class="relative flex h-[35px] w-[35px] items-center justify-center"><img
+                                src="/assets/img/gaugey.png"
+                                class="appear absolute w-full rounded-full"><span
+                                class="pt-[2px] text-sm font-bold md:text-xl">2</span></div>
+                    </div>
+                </div>
+                <div class="!text-[14px] inline-flex items-center justify-start gap-2.5 self-stretch"><span
+                        class="font-medium">Created by</span><a class="font-bold text-blue-600 underline"
+                        href="#">{{market_details[0]?.stage_name}} </a></div>
+                <div class="relative flex w-full items-center justify-between leading-none">
+                    <div class="!text-[14px]"><span class="font-bold">{{market_details[0]?.listing_target}} {{market_details[0]?.list_percentage}}%</span></div>
+                    <div class="relative"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="flex items-center justify-between">
+            <h3 class="text-[14px] leading-relaxed"><span class="font-bold">{{market_details?.length}} listings</span> <span
+                    class="font-medium"> available</span></h3><a href="/cards/community?id=Hl8SvPw2MfCuEsgE1rFj">
+                        <!-- <button
+                    class="btn-invert !min-w-0 rounded-none border-0 border-b !bg-transparent text-sm font-bold md:h-[26px] md:!text-lg"
+                    type="button">View all shareholders</button> -->
+                </a>
+        </div>
+        <div class="grid w-full grid-cols-1 gap-20p md:grid-cols-2" >
+            <div class="flex items-end justify-between rounded-5 border border-gray-2 px-15p py-10p" *ngFor="let item of market_details;">
+                <div class="flex items-center gap-10p !text-[10px] md:!text-[12px]"><span
+                        style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 64px; height: 64px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                            src="{{item?.card?.owner?.photo_url}}"
+                            decoding="async" data-nimg="fixed" class="appear rounded-full bg-gray-2 object-cover"
+                            srcset="{{item?.card?.owner?.photo_url}}"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                            <noscript>
+
+                            </noscript>
+                        </span>
+                    <div class="grid grid-cols-1 gap-1">
+                        <p><span class="font-medium ">Current Owner</span> <a class="font-bold underline text-prime"
+                                href="#">{{item?.card?.owner?.stage_name}}</a></p>
+                        <p class="text-[10px] font-medium leading-tight md:text-[12px]">Available for <span
+                                class="font-bold">Purchase</span></p>
+                        <p class="text-[12px]"><span class="font-medium">Value: </span> <span class="font-bold">direct
+                                {{item?.shares}}%</span></p>
+                    </div>
+                </div>
+                <!-- <button
+                    class="flex items-center justify-center h-10 min-w-[10rem] btn !h-8 !w-20 !min-w-0 !rounded-full text-[13px] !uppercase"
+                    type="button">Buy</button> -->
+            </div>
+            <!-- <div class="flex items-end justify-between rounded-5 border border-gray-2 px-15p py-10p">
+                <div class="flex items-center gap-10p !text-[10px] md:!text-[12px]"><span
+                        style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 64px; height: 64px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
+                            src="/_next/image?url=https%3A%2F%2Fuser-gen-content.s3.amazonaws.com%2Fstage%2Fphotos%2FFcpGSXLpNN546Aq0kK9J%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAXU2R3TSSJQYXHVNI%252F20230823%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20230823T112308Z%26X-Amz-Expires%3D18000%26X-Amz-Signature%3De55408a15c47a200066484bc2758a4bf651e92ccc347f864fe67109f7f230370%26X-Amz-SignedHeaders%3Dhost&amp;w=128&amp;q=90"
+                            decoding="async" data-nimg="fixed" class="appear rounded-full bg-gray-2 object-cover"
+                            srcset="/_next/image?url=https%3A%2F%2Fuser-gen-content.s3.amazonaws.com%2Fstage%2Fphotos%2FFcpGSXLpNN546Aq0kK9J%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAXU2R3TSSJQYXHVNI%252F20230823%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20230823T112308Z%26X-Amz-Expires%3D18000%26X-Amz-Signature%3De55408a15c47a200066484bc2758a4bf651e92ccc347f864fe67109f7f230370%26X-Amz-SignedHeaders%3Dhost&amp;w=64&amp;q=90 1x, /_next/image?url=https%3A%2F%2Fuser-gen-content.s3.amazonaws.com%2Fstage%2Fphotos%2FFcpGSXLpNN546Aq0kK9J%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAXU2R3TSSJQYXHVNI%252F20230823%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20230823T112308Z%26X-Amz-Expires%3D18000%26X-Amz-Signature%3De55408a15c47a200066484bc2758a4bf651e92ccc347f864fe67109f7f230370%26X-Amz-SignedHeaders%3Dhost&amp;w=128&amp;q=90 2x"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"><noscript></noscript></span>
+                    <div class="grid grid-cols-1 gap-1">
+                        <p><span class="font-medium ">Current Owner</span> <a class="font-bold underline text-prime"
+                                href="/profile/FcpGSXLpNN546Aq0kK9J">DIPWT </a></p>
+                        <p class="text-[10px] font-medium leading-tight md:text-[12px]">Available for <span
+                                class="font-bold">Purchase</span></p>
+                        <p class="text-[12px]"><span class="font-bold"><span class="text-auction">46</span> of 50
+                                remaining</span></p>
+                    </div>
+                </div><button
+                    class="flex items-center justify-center h-10 min-w-[10rem] btn !h-8 !w-20 !min-w-0 !rounded-full text-[13px] !uppercase"
+                    type="button">Buy</button>
+            </div> -->
+        </div>
+    </div>
+</div>

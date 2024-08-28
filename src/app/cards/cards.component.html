@@ -1,0 +1,551 @@
+<style>
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ffffffe8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        /* border: 4px solid #Fff; */
+        animation: loader 2s infinite ease;
+    }
+
+    .loader-inner {
+        vertical-align: top;
+        display: inline-block;
+        width: 100%;
+        background-color: #fff;
+        animation: loader-inner 2s infinite ease-in;
+    }
+
+    @keyframes loader {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(90deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        75% {
+            transform: rotate(270deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+
+
+    }
+
+    #bottom-row {
+        background-color: #79f9af;
+        color: #030201;
+        height: 80px;
+        border-bottom-left-radius: 13px;
+        border-bottom-right-radius: 13px;
+        /* top: 50%;
+    height: 30%;
+    border-radius: 7px; */
+    }
+
+    #bacgrounn {
+        background-image: url(assets/img/Video.png);
+        background-size: contain;
+        height: 40vh;
+        background-repeat: no-repeat;
+    }
+
+    #bottom-row2 {
+        margin-top: -20%;
+
+    }
+
+    .texttss {
+
+        margin-top: -20%;
+    }
+
+    .mid-txt {
+        color: white;
+        font-weight: 800;
+        text-align: center;
+    }
+
+    .mid-txt2 {
+        color: white;
+        font-weight: 800;
+        border: 3px solid #fff;
+        border-radius: 21px;
+        text-align: center;
+        width: 60%;
+        margin-left: 20%;
+    }
+
+    .heatt {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* width: 100%; */
+        /* height: 100%; */
+        margin-top: -15%;
+
+    }
+
+    .title {
+        font-weight: 800;
+        font-size: 9px;
+    }
+
+    .subtitle {
+        font-weight: 400;
+    }
+
+    .borderLines {
+        border: 4px solid black
+    }
+
+
+    .card1 {
+        border-radius: 12px;
+        /* box-shadow: 0 6px 10px -4px #00000026; */
+        background-color: #fff;
+        color: #252422;
+        margin-bottom: 20px;
+        position: relative;
+        border: 0 none;
+        transition: transform .3s cubic-bezier(.34, 2, .6, 1), box-shadow .2s ease;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        /* border: 1px solid rgba(0,0,0,.125); */
+        /* border-radius: 0.25rem;
+    border-radius: 17px; */
+        /* background-color: #3e4550; */
+        /* background-image: url(/_next/static/media/card_bg.4cea98cb.jpg); */
+        background-size: cover;
+        background-position: top;
+
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto 2px;
+    }
+
+    .avatar {
+        width: 30px !important;
+        height: 30px !important;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+
+    .verticc {
+        display: flex;
+        margin-top: 10%;
+        align-items: center;
+    }
+
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .pagination button:hover {
+        background-color: #f2f2f2;
+    }
+
+    .pagination span {
+        margin: 0 10px;
+    }
+
+    .verticc {
+        display: flex;
+        margin-top: 10%;
+        align-items: center;
+    }
+</style>
+
+
+
+
+
+<!-- <div class="row">
+
+    <div class="col-md-12">
+        <div class="card1 card-user">
+            <div class="card-header">
+                <h5 class="card-title">Filter</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4 pr-1">
+                            <div class="form-group">
+                                <label>Card Title</label>
+                                <input type="text" class="form-control" value="" >
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-1">
+                            <div class="form-group">
+                                <label>Stage Name</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-4 pl-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Status</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                  
+
+                    <div class="row">
+
+                        <div class="col-md-2">
+
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" class="btn btn-primary btn-round"
+                                    >Search</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1 pr-1">
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" class="btn btn-warning btn-round">Reset </button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div> -->
+
+
+
+
+<div class="flex justify-between items-center font-semibold mb-5 py-2">
+    <h2 class="text-2xl md:text-3xl font-bold">Trending Cards</h2>
+</div>
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+
+    <div ngxSlickItem *ngFor="let item of trending_list;" style="padding-bottom: 20px;" class="slide">
+
+        <div>
+
+
+
+            <div class="relative cursor-pointer " (click)="gotoCardDetails(item.id)">
+                <div class="flex-row flex-wrap">
+                    <div class="card silver-card ">
+                        <div class="absolute left-0 top14px z10">
+
+                        </div>
+                        <div class="card__body">
+                            <div class="card__body__chip">
+                                <div class="chip"></div>
+                                <div class="connect-symbol"><svg width="24" height="29" viewBox="0 0 24 29" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M18.4129 1.58203C20.6065 5.39386 21.7613 9.71783 21.7613 14.1193C21.7613 18.5209 20.6065 22.8448 18.4129 26.6567M12.9147 4.34024C14.6256 7.31346 15.5264 10.6862 15.5264 14.1193C15.5264 17.5525 14.6256 20.9252 12.9147 23.8985M7.66632 6.87278C8.90346 9.04552 9.55477 11.5102 9.55477 14.019C9.55477 16.5279 8.90346 18.9926 7.66632 21.1653M2.41797 9.60591C3.30957 10.9597 3.78225 12.5235 3.78225 14.1193C3.78225 15.7152 3.30957 17.2789 2.41797 18.6328"
+                                            stroke="#D9D9D9" stroke-width="2.86567" stroke-linecap="round"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="card__body__profile-img">
+                                <div class="img-wrap"><span
+                                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                            src="{{item?.cover_art_url}}" decoding="async" data-nimg="fill"
+                                            class="bg-gray-2"
+                                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"><noscript></noscript></span>
+                                </div>
+                            </div>
+                            <div class="card__body__meta">
+                                <h2 class="artists-name capitalize">{{item?.stage_name}}</h2>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <div class="w-full flex items-center justify-between pl-4">
+                                <div class="flex flex-1 w-1/2">
+                                    <div class="card__info"><label>Powered by</label>
+                                        <p class="card__info__asset-name line-clamp-2 capitalize">{{item?.title}}</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 flex justify-center items-center">
+                                    <div class="card__watermark"><img src="/assets/img/logo-w.svg" alt="Damee"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <br>
+
+</ngx-slick-carousel>
+
+
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <form>
+                    <div class="input-group no-border verticc">
+                        <input type="text" value="" class="form-control"
+                            placeholder="Filter by  CARD TITLE, STAGE NAME, status..." [(ngModel)]="searchText">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i class="nc-icon nc-zoom-split"></i>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+            <div class="col-md-4">
+                <div class="form-outline mb-4">
+                    <label>Choose Date period From:</label>
+                    <input type="date" [(ngModel)]="from" class="form-control" placeholder="Date From" />
+
+                </div>
+                <div class="form-outline mb-4">
+                    <label>Choose Date period To:</label>
+                    <input type="date" [(ngModel)]="to" class="form-control" placeholder="Date To" />
+
+                </div>
+
+                <button class="btn btn-info btn-block fa-lg gradient-custom-2 mb-3" (click)="filerDate(from,to)">
+
+                    Filter
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class=".card1">
+            <div class="card-header">
+                <h4 class="card-title"> CARDS PUBLISHED</h4>
+                <button class="btn btn-warning btn-round" (click)=downloadCSV(items2) style="float: right">Export
+                    Data</button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                IMAGE
+                            </th>
+                            <th (click)="sort('stage_name')">
+                                STAGE NAME
+                            </th>
+                            <th (click)="sort('title')">
+                                CARD TITLE
+                            </th>
+                            <th (click)="sort('balance')">
+                                BALANCE
+                            </th>
+                            <th (click)="sort('distribution_status')">
+                                DISTRIBUTION STATUS
+                            </th>
+                            <th (click)="sort('distribution_status_date')">
+                                DISTRIBUTION DATE
+                            </th>
+
+                            <th (click)="sort('listed')">
+                                LISTED
+                            </th>
+
+                            <th>
+                                CARD OWNER
+                            </th>
+                            <th (click)="sort('created_at')">
+                                CARD CREATED ON
+                            </th>
+                            <th (click)="sort('status')">
+                                STATUS
+                            </th>
+
+
+                        </thead>
+                        <tbody *ngFor="let item of user_list | orderBy: sortKey: sortDirection  | filter:searchText; let i = index">
+                            <tr>
+
+                                <td>
+                                    {{i + 1}}
+                                </td>
+                                <td *ngIf="item?.cover_art_url" (click)="gotoCardDetails(item.id)">
+                                    <img class="avatar border-gray" src="{{item.cover_art_url}}" alt=""
+                                        (click)="details(item)">
+
+                                </td>
+                                <td *ngIf="!item.cover_art_url" (click)="gotoCardDetails(item.id)">
+
+                                    <img class="avatar border-gray" src="assets/img/show.jpeg" alt=""
+                                        (click)="details(item)">
+
+
+                                </td>
+                                <td (click)="gotoCardDetails(item.id)">
+                                    {{item?.stage_name}}
+                                </td>
+                                <td (click)="gotoCardDetails(item.id)">
+                                    {{item?.title}}
+                                </td>
+
+                                <td (click)="gotoCardDetails(item.id)">
+                                    {{item?.balance}}
+                                </td>
+
+                                <td (click)="gotoCardDetails(item.id)">
+                                    <p style="color:rgb(22, 10, 99);font-weight: 900;"> {{item?.distribution_status}}
+                                    </p>
+                                </td>
+
+                                <td (click)="gotoCardDetails(item.id)">
+                                    <p style="color:rgb(22, 10, 99);font-weight: 900;"> {{item?.distribution_status_date
+                                        | date:'medium'}} </p>
+                                </td>
+
+
+
+
+
+                                <td *ngIf="item?.listed == true">
+
+                                    <p style="color:rgb(3, 149, 95);font-weight: 900;">Listed</p>
+                                </td>
+                                <td *ngIf="item?.listed == false">
+
+                                    <p style="color:brown;font-weight: 900;">Not Listed <i
+                                            class="nc-icon nc-arrow text-warning"></i>
+                                    </p>
+                                </td>
+
+
+
+
+
+                                <td (click)="details(item)">
+                                    {{item?.owner?.full_name}}
+                                </td>
+                                <td (click)="details(item)">
+                                    {{item?.created_at | date:'medium'}}
+                                </td>
+
+                                <td *ngIf="item?.status == 'active'">
+
+                                    <p style="color:rgb(3, 149, 95);font-weight: 900;">Active</p>
+                                </td>
+                                <td *ngIf="item?.status != 'active'">
+
+                                    <p style="color:brown;font-weight: 900;">{{item?.status}} <i
+                                            class="nc-icon nc-arrow text-warning"></i>
+                                    </p>
+                                </td>
+                                <td>
+                                    <div class="update ml-auto mr-auto">
+                                        <button class="btn btn-warning btn-round" (click)="hott(item.id)">Hot
+                                            Pick</button>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-primary btn-round" (click)="approve(item.id)"
+                                        *ngIf="item.status != 'active'">Approve Card </button>
+                                    <button class="btn btn-danger btn-round" (click)="disapprove(item.id)"
+                                        *ngIf="item.status == 'active'">Block Card</button>
+
+
+                                </td>
+                                <!-- <td><button class="btn btn-primary btn-round" (click)="distribute(item.id)"
+                                        *ngIf="item.status == 'active'">Distribute
+                                        Card</button></td> -->
+
+
+
+
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+                <div class="pagination">
+                    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+                    <span>{{ currentPage }} / {{ totalPages }}</span>
+                    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<app-loader *ngIf="!loading"></app-loader>
+
+<div class="loader-wrapper" *ngIf="!loading">
+    <img src="assets/img/show.jpeg" class="loader">
+</div>

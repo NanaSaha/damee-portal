@@ -1,0 +1,348 @@
+<style>
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .pagination button:hover {
+    background-color: #f2f2f2;
+  }
+
+  .pagination span {
+    margin: 0 10px;
+  }
+
+  .verticc {
+    display: flex;
+    margin-top: 10%;
+    align-items: center;
+  }
+</style>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+
+
+    <div class="row">
+      <div class="col-md-8">
+        <form>
+          <div class="input-group no-border verticc">
+            <input type="text" value="" class="form-control"
+              placeholder="Filter by name, email, mobile number, verification status..." [(ngModel)]="searchText">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <i class="nc-icon nc-zoom-split"></i>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-outline mb-4">
+          <label>Choose Date period From:</label>
+          <input type="date" [(ngModel)]="from" class="form-control" placeholder="Date From" />
+
+        </div>
+        <div class="form-outline mb-4">
+          <label>Choose Date period To:</label>
+          <input type="date" [(ngModel)]="to" class="form-control" placeholder="Date To" />
+
+        </div>
+
+        <button class="btn btn-info btn-block fa-lg gradient-custom-2 mb-3" (click)="filerDate(from,to)">
+
+          Filter
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> USERS</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+
+
+          <table class="table">
+            <thead class="text-primary">
+              <tr>
+                <th>
+                  No
+                </th>
+                <th>
+                  IMAGE
+                </th>
+                <th (click)="sort('full_name')">
+                  FULL NAME
+                </th>
+                <th (click)="sort('stage_name')">
+                  STAGE NAME
+                </th>
+                <th>
+                  EMAIL
+                </th>
+                <th (click)="sort('mobile_number')">
+                  MOBILE NUMBER
+                </th>
+                <th>
+                  WALLET BALANCE
+                </th>
+                <th (click)="sort('account_status')">
+                 STATUS
+                </th>
+                <th (click)="sort('created_at')">
+                  Date
+                </th>
+                <th>
+               
+                </th>
+                <th>
+                 
+                </th>
+                <th>
+               
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of user_list | filter:searchText; let i = index">
+              <tr>
+                <td>
+                  {{i + 1}}
+                </td>
+
+                <td *ngIf="item.photo_url">
+                  <img class="avatar border-gray" src="{{item.photo_url}}" alt="" (click)="details(item)">
+
+                </td>
+                <td *ngIf="!item.photo_url">
+
+                  <img class="avatar border-gray" src="assets/img/show.jpeg" alt="" (click)="details(item)">
+
+
+                </td>
+                <td (click)="details(item)">
+                  {{item.full_name}}
+                </td>
+                <td (click)="details(item)">
+                  {{item.stage_name}}
+                </td>
+                
+                <td (click)="details(item)">
+                  {{item.email}}
+                </td>
+                <td>
+                  {{item.mcc}}{{item.mobile_number}}
+                </td>
+                <td>
+                  <span style="font-weight: 900">{{item.currency}}{{item.wallet_balance}}</span>
+                </td>
+
+                <td *ngIf="item.account_status != 'suspended'">
+                <p style="color:rgb(36, 165, 11);font-weight: 900;">  {{item.account_status}} </p>
+                </td>
+                <td *ngIf="item.account_status == 'suspended'">
+                
+                  <p style="color:brown;font-weight: 900;">Suspended</p>
+                </td>
+
+                <!-- <td *ngIf="item.is_active == false">
+
+                  <p style="color:brown;font-weight: 900;">Not Verified</p>
+                </td>
+
+                <td *ngIf="item.is_active == true">
+                  <p style="color:rgb(36, 165, 11);font-weight: 900;">Verified</p>
+                </td> -->
+                <td>
+                  {{item.created_at | date: 'medium'}}
+                </td>
+
+                <td>
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-warning btn-round" (click)="details(item)">View More</button>
+                  </div>
+                </td>
+                <td *ngIf="item.account_status == 'suspended'">
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-primary btn-round" (click)="verify(item)">Unsuspend User</button>
+                  </div>
+                </td>
+
+                <td *ngIf="item.account_status != 'suspended'">
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-info btn-round" (click)="disable(item)">Block User</button>
+                  </div>
+                </td>
+
+                <!-- <td>
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-secondary btn-round" (click)="topup(item.id)">Virtual TopUp</button>
+                  </div>
+                </td> -->
+
+                <td>
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-danger btn-round" (click)="delete_user(item)">Delete User</button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>{{ currentPage }} / {{ last_page }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === last_page">Next</button>
+      </div>
+
+
+     
+      
+   
+
+
+    <!-- <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> USERS</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table" datatable [dtOptions]="dtOptions" >
+            <thead class=" text-primary">
+              <th>
+                No
+              </th>
+              <th>
+                IMAGE
+              </th>
+              <th>
+                FULL NAME
+              </th>
+              <th>
+                EMAIL
+              </th>
+              <th>
+                MOBILE NUMBER
+              </th> -->
+    <!-- <th>
+                WALLET BALANCE
+              </th>
+              <th>
+                VERIFICATION STATUS
+              </th>
+              <th>
+                Date
+              </th> -->
+
+
+
+    <!-- </thead>
+            <tbody *ngFor="let item of user_list | filter:searchText; let i = index">
+              <tr>
+                <td>
+                  {{i + 1}}
+                </td> -->
+
+    <!-- <td *ngIf="item.photo_url">
+                  <img class="avatar border-gray" src="{{item.photo_url}}" alt="" (click)="details(item)">
+
+                </td>
+                <td *ngIf="!item.photo_url">
+
+                  <img class="avatar border-gray" src="assets/img/show.jpeg" alt="" (click)="details(item)">
+
+
+                </td> -->
+    <!-- <td (click)="details(item)">
+                  {{item.full_name}}
+                </td>
+                <td (click)="details(item)">
+                  {{item.email}}
+                </td>
+                <td>
+                  {{item.mobile_number}}
+                </td>
+                <td>
+                  <span style="font-weight: 900">£{{item.wallet_balance}}</span>
+                </td> -->
+
+
+    <!-- <td *ngIf="item.is_active == false">
+
+                  <p style="color:brown;font-weight: 900;">Not Verified</p>
+                </td>
+
+                <td *ngIf="item.is_active == true">
+                  <p style="color:rgb(36, 165, 11);font-weight: 900;">Verified</p>
+                </td>
+                <td>
+                  {{item.created_at | date: 'medium'}}
+                </td> -->
+
+    <!-- <td>
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-warning btn-round" (click)="details(item)">View More</button>
+                  </div>
+                </td>
+                <td *ngIf="item.is_active == false">
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-primary btn-round" (click)="verify(item)">Verify User</button>
+                  </div>
+                </td>
+
+                <td *ngIf="item.is_active == true">
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-info btn-round" (click)="disable(item)">Disable User</button>
+                  </div>
+                </td> -->
+
+    <!-- <td>
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-secondary btn-round" (click)="topup(item.id)">Virtual TopUp</button>
+                  </div>
+                </td> -->
+
+    <!-- <td>
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-danger btn-round" (click)="delete_user(item.id)">Delete User</button>
+                  </div>
+                </td> -->
+
+
+
+
+    <!-- </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+          <span>{{ currentPage }} / {{ totalPages }}</span>
+          <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  </div>
+
+
+  <app-loader *ngIf="!loading"></app-loader>

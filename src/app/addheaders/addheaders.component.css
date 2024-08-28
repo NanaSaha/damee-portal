@@ -1,0 +1,11 @@
+.form-control {
+    height: 48px;
+}
+
+textarea.form-control {
+    max-height: 300px !important;
+    height: 100px;
+    /* Adjust the desired height */
+    width: 500px;
+    /* Adjust the desired width */
+}
