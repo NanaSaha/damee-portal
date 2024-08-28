@@ -79,7 +79,7 @@ export class RevenueRecordComponent implements OnInit {
     formData.append('report', this.selectedFile, this.selectedFile.name);
 
     // Replace 'your-upload-url' with the actual URL for your server endpoint
-    this.http.post('https://apidev.showout.studio/revenue', formData, httpOptions).subscribe(
+    this.http.post('https://apitest.stradebase.com//revenue', formData, httpOptions).subscribe(
       response => {
         console.log('File uploaded successfully!', response);
         this.router.navigate(['revenue_list']);

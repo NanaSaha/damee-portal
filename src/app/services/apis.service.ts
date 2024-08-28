@@ -16,7 +16,7 @@ const EXCEL_EXTENSION = '.xlsx';
   providedIn: 'root'
 })
 export class ApisService {
-  main_url = "https://apidev.showout.studio"; 
+  main_url = "https://apitest.stradebase.com/"; 
   login_enpoint = this.main_url + "/admin/login";
   // get_users = this.main_url + "/admin/get-users";
   get_users = this.main_url + "/user/list";
